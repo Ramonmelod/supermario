@@ -13,7 +13,7 @@
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    background-color: aqua;
+    background-color: #aed4f8;
 }
 .pipe{
 
@@ -96,7 +96,7 @@
 }
 .solo{
     position: absolute;
-    background-color: darkgreen;
+    background-color: #05c804;
     height: 10px;
     width: 100%;
     bottom: 0;
