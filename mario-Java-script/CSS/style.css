@@ -18,7 +18,7 @@
 .pipe{
 
     position: absolute;
-    bottom: 0px;
+    bottom: 10px;
     width: 80px;
     animation: pipe-animation 2s infinite linear;
 
@@ -39,7 +39,7 @@
     display: 'block';
     position: absolute;
     left: 0;
-    bottom: 0px;
+    bottom: 10px;
     height: 80px;
 
 }
@@ -71,16 +71,16 @@
 .gameOver{
     display: none;      /* muda de block para none*/
     position: absolute;
-    bottom: 90px;
+    bottom: 100px;
     left: 10px;
-    height: 80px;
+    height: 65px;
 }
 
 .nuvens{
 
     position: absolute;
     top:40px;
-    height: 170px;
+    height: 180px;
     animation: nuvens-animation 30s infinite;
 
 }
@@ -93,4 +93,13 @@
     to {
      left:  100%;
     }
+}
+.solo{
+    position: absolute;
+    background-color: darkgreen;
+    height: 10px;
+    width: 100%;
+    bottom: 0;
+
+
 }

@@ -16,7 +16,7 @@ const loop = setInterval (() =>{
     const pipePosition = pipe.offsetLeft;        // monitora o posicionamento class pipe
     const marioPosition = mario.offsetTop;       //monitora o posicionamento class mario
     
-    if((pipePosition < 68 ) & (marioPosition > 408)){
+    if((pipePosition < 68 ) & (marioPosition > 398)){
     pipe.style.animation = 'none';
     gameOver.style.display ='block';
     mario.style.display = 'none';
