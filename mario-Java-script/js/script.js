@@ -20,6 +20,7 @@ const loop = setInterval (() =>{
     pipe.style.animation = 'none';
     gameOver.style.display ='block';
     mario.style.display = 'none';
+    pipe.style.left = '68px';
 
     
 }

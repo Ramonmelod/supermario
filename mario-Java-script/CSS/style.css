@@ -71,8 +71,8 @@
 .gameOver{
     display: none;      /* muda de block para none*/
     position: absolute;
-    bottom: 70px;
-    left: 14px;
+    bottom: 90px;
+    left: 10px;
     height: 80px;
 }
 
