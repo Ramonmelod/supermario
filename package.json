@@ -1,13 +1,15 @@
 {
-  "title": "Mario Jump",
-  "description": "Site teste com o jogo do mario feito por mim",
-  "version": "1.0.0",
-  "scripts": [
-    {
-      "name": "build",
-      "command": "cp mario-Java-script/"
-    }
-  ],
-  "author": "Ramon Melo <ramonmelo.com.br>",
-  "license": "ISC"
+  "name": "supermario",  // Nome do seu projeto
+  "version": "1.0.0",  // Versão do seu projeto
+  "description": "Jogo do Mario em JavaScript",  // Descrição do seu projeto
+  "main": "index.js",  // Arquivo JavaScript principal
+  "scripts": {
+    "start": "index.html"  // Comando para iniciar o servidor local (substitua 'index.js' pelo arquivo principal do seu projeto)
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ramonmelod/supermario"  // URL do seu repositório no GitHub
+  },
+  "author": "Ramon Melo",
+  "license": "MIT",  // Licença do seu projeto
 }
