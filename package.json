@@ -1,0 +1,13 @@
+{
+  "title": "Mario Jump",
+  "description": "Site teste com o jogo do mario feito por mim",
+  "version": "1.0.0",
+  "scripts": [
+    {
+      "name": "build",
+      "command": "cp mario-Java-script/"
+    }
+  ],
+  "author": "Ramon Melo <ramonmelo.com.br>",
+  "license": "ISC"
+}
