@@ -1,4 +1,6 @@
 [build]
-  base = "https://github.com/Ramonmelod/supermario/tree/main/mario-Java-script"
-  command = "echo 'No build process required'"
-  publish = "https://github.com/Ramonmelod/supermario/tree/main/mario-Java-script"
+  base = "" 
+  publish = "src" 
+
+[[plugins]]
+  package = "netlify-plugin-inline-functions-env"  
