@@ -1,15 +1,15 @@
 {
-  "name": "supermario",  // Nome do seu projeto
-  "version": "1.0.0",  // Versão do seu projeto
-  "description": "Jogo do Mario em JavaScript",  // Descrição do seu projeto
-  "main": "index.js",  // Arquivo JavaScript principal
+  "name": "supermario", 
+  "version": "1.0.0",  
+  "description": "Jogo do Mario em JavaScript", 
+  "main": "index.js",  
   "scripts": {
-    "start": "index.html"  // Comando para iniciar o servidor local (substitua 'index.js' pelo arquivo principal do seu projeto)
+    "start": "index.html"  
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ramonmelod/supermario"  // URL do seu repositório no GitHub
+    "url": "https://github.com/Ramonmelod/supermario"  
   },
   "author": "Ramon Melo",
-  "license": "MIT",  // Licença do seu projeto
+  "license": "MIT",
 }
