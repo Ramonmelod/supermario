@@ -18,9 +18,10 @@ const loop = setInterval (() =>{
     
     if((pipePosition < 68 ) & (marioPosition > 398)){
     pipe.style.animation = 'none';
+    gameOver.style.bottom = marioPosition - 350 + 'px'; // concatenação - 350
     gameOver.style.display ='block';
     mario.style.display = 'none';
-    pipe.style.left = '68px';
+    pipe.style.left = pipePosition + 'px';      //concatenação de pipepisitioncom px
 
     
 }
