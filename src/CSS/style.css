@@ -3,9 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-
-
 .game-board{
     width: 50%;
     height: 500px;
@@ -22,7 +19,6 @@
     width: 80px;
     animation: pipe-animation 2s infinite linear;
 
-    
 }
 
 @keyframes pipe-animation{
@@ -101,5 +97,15 @@
     width: 100%;
     bottom: 0;
 
+
+}
+.pontuacao{
+    position: absolute;
+    right: 10%;
+    top: 3%;
+    color: rgb(246, 248, 242);
+    font-size: xx-large;
+    font-weight: 300;
+    font-family: fantasy;
 
 }
