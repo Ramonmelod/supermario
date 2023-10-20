@@ -2,5 +2,4 @@
   base = "" 
   publish = "src" 
 
-[[plugins]]
-  package = "netlify-plugin-inline-functions-env"  
+
