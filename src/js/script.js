@@ -18,16 +18,15 @@ const loop1 = setInterval (() =>{
     
     const pipePosition = pipe.offsetLeft;        // monitora o posicionamento class pipe
     const marioPosition = mario.offsetTop;         //monitora o posicionamento class mario
-        
-    if((pipePosition < 68)&&(marioPosition < 243) &&(pontosControle)){  // condição de pontuação
+    if((pipePosition < 65)&&(marioPosition < 353) &&(pontosControle)){  // condição de pontuação
              pontos++;
              const mostrarPontos = document.getElementsByClassName('pontuacao')[0];// recebe o primeiro elemento da classe pontos
              mostrarPontos.innerHTML = pontos;                       // altera o mostrador dos pontos
     }
-    else if((pipePosition < 68 ) & (marioPosition > 398)){  // condição de game over
+    else if((pipePosition < 65 ) & (marioPosition > 353)){  // condição de game over
             
             pipe.style.animation = 'none';                       // desliga o movimento do cano
-            gameOver.style.bottom = marioPosition - 350 + 'px'; // concatenação - 350
+            gameOver.style.bottom = marioPosition - 330 + 'px'; // concatenação - 350
             gameOver.style.display ='block';                    // mostra o desenho de game-over do mario
             mario.style.display = 'none';                       // esconde o gif do mario andando
             pipe.style.left = pipePosition + 'px';             //concatenação de pipepisitioncom px
