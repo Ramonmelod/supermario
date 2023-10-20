@@ -1,4 +1,4 @@
 [build]
-  base = "https://github.com/Ramonmelod/supermario"
+  base = "https://github.com/Ramonmelod/supermario/tree/main/mario-Java-script"
   command = "echo 'No build process required'"
-  publish = "https://github.com/Ramonmelod/supermario"
+  publish = "https://github.com/Ramonmelod/supermario/tree/main/mario-Java-script"
