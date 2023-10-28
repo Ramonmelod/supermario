@@ -130,12 +130,20 @@
     font-style: oblique;
     position: absolute;
     left: 15px;
-    top: 15px;
+    top: 10px;
 
 }
 .caixa{
     position: absolute;
     left: 5px;
     top: 330px;
+
+}
+.nomeDigitado{
+    font-size: large;
+    font-weight: 600;
+    position: absolute;
+    left: 5px;
+    top: 50px;
 
 }

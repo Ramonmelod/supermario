@@ -37,9 +37,14 @@ const loop1 = setInterval (() =>{
 },100);
 
 const caixa = document.querySelector('.caixa')               // caixa de dialogo com captura do texto com a tecla enter
-caixa.addEventListener('keydown', (event) => {
+const nomeDigitado = document.querySelector('.nomeDigitado')
+
+const digitacao = caixa.addEventListener('keydown', (event) => {
+    let a = caixa.value
     if (event.key === 'Enter') {
-        let a = caixa.value;
-        console.log(a);
+        console.log(a)
+        nomeDigitado.innerHTML = a
     }
 })
+
+
