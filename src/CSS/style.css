@@ -9,7 +9,7 @@
     border: 1px solid #0000ff;
     margin: 0 auto;
     position: relative;
-    overflow: hidden;
+    overflow:hidden;
     background-color: #aed4f8;
 }
 .pipe{
@@ -116,4 +116,26 @@
     font-size: large;
     font-weight: 300;
     font-family: fantasy;
+}
+.recordes{
+    border: 3px solid aqua;
+    position: absolute;
+    height: 300px;
+    width: 180px;
+    left: 50px;
+    top: 100px;
+}
+.tituloRecordes{
+    color: rgb(7, 12, 17);
+    font-style: oblique;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+
+}
+.caixaDialogo{
+    position: absolute;
+    left: 5px;
+    top: 330px;
+
 }
