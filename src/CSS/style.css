@@ -147,3 +147,12 @@
     top: 50px;
 
 }
+.instrucoes{
+    font-size:large;
+    font-weight: 300;
+    position: absolute;
+    right: 5px;
+    top: 50px;
+    color: black;
+
+}

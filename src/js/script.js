@@ -12,7 +12,12 @@ const jump = ()=>{
     
 }
 
-document.addEventListener('keydown',jump);
+const ativaJump = document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowUp') {
+        jump(); 
+    }
+
+}       )                         
 
 const loop1 = setInterval (() =>{
     
@@ -29,7 +34,7 @@ const loop1 = setInterval (() =>{
             gameOver.style.bottom = marioPosition - 330 + 'px'; // concatenação - 350
             gameOver.style.display ='block';                    // mostra o desenho de game-over do mario
             mario.style.display = 'none';                       // esconde o gif do mario andando
-            pipe.style.left = pipePosition + 'px';             //concatenação de pipepisitioncom px
+            pipe.style.left = pipePosition + 'px';             //concatenação de pipeposition com px
             pontosControle = false;
     
     
@@ -43,7 +48,10 @@ const digitacao = caixa.addEventListener('keydown', (event) => {
     let a = caixa.value
     if (event.key === 'Enter') {
         console.log(a)
-        nomeDigitado.innerHTML = a
+        if(!pontosControle){
+            nomeDigitado.innerHTML = a                      //libera a digitação para a tabela de recordes apenas com o fim do jogo
+        }
+        
     }
 })
 
