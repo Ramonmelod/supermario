@@ -56,3 +56,19 @@ const digitacao = caixa.addEventListener('keydown', (event) => {
 })
 
 
+fetch('http://localhost:8080')                             //captura dos dados em json da api de leitura e registro de recordes
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erro na solicitação da API')
+    }
+    return response.json();
+  })
+  .then(data => {
+    let primeiraArray = data[0]
+    
+    console.log(primeiraArray.s_nome_listarecordistas)
+    console.log(primeiraArray.i_pontuacao_listarecordistas)
+  })
+  .catch(error => {
+    console.error('Erro:', error)
+  });
