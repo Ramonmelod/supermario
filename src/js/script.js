@@ -55,8 +55,17 @@ const digitacao = caixa.addEventListener('keydown', (event) => {
     }
 })
 
-const r01 = document.querySelector('#r01')
+const r01 = document.querySelector('#r01')                    // declaração dos elementos html que compõe a lista de recordistas
 const r02 = document.querySelector('#r02')
+const r03 = document.querySelector('#r03')
+const r04 = document.querySelector('#r04')
+const r05 = document.querySelector('#r05')
+const r06 = document.querySelector('#r06')
+const r07 = document.querySelector('#r07')
+const r08 = document.querySelector('#r08')
+const r09 = document.querySelector('#r09')
+const r10 = document.querySelector('#r10')
+
 
 fetch('http://localhost:8080')                             //captura dos dados em json da api de leitura e registro de recordes
   .then(response => {
@@ -70,11 +79,16 @@ fetch('http://localhost:8080')                             //captura dos dados e
     for (let i = 0; i < data.length; i++) {              // adição dos elementos json para dentro da array
       array.push(data[i]);
   }
-  
-    console.log(array[0].s_nome_listarecordistas)         //imprimem no console os dados tratados recebido da api  
-    console.log(array[1].i_pontuacao_listarecordistas)
-    r01.innerHTML = array[0].s_nome_listarecordistas + ' -------  ' + array[0].i_pontuacao_listarecordistas +' pts'
+    r01.innerHTML = array[0].s_nome_listarecordistas + ' -------  ' + array[0].i_pontuacao_listarecordistas +' pts'  // impressão lista recordistas
     r02.innerHTML = array[1].s_nome_listarecordistas + ' -------  ' + array[1].i_pontuacao_listarecordistas +' pts'
+    r03.innerHTML = array[2].s_nome_listarecordistas + ' -------  ' + array[2].i_pontuacao_listarecordistas +' pts'
+    r04.innerHTML = array[3].s_nome_listarecordistas + ' -------  ' + array[3].i_pontuacao_listarecordistas +' pts'
+    r05.innerHTML = array[4].s_nome_listarecordistas + ' -------  ' + array[4].i_pontuacao_listarecordistas +' pts'
+    r06.innerHTML = array[5].s_nome_listarecordistas + ' -------  ' + array[5].i_pontuacao_listarecordistas +' pts'
+    r07.innerHTML = array[6].s_nome_listarecordistas + ' -------  ' + array[6].i_pontuacao_listarecordistas +' pts'
+    r08.innerHTML = array[7].s_nome_listarecordistas + ' -------  ' + array[7].i_pontuacao_listarecordistas +' pts'
+    r09.innerHTML = array[8].s_nome_listarecordistas + ' -------  ' + array[8].i_pontuacao_listarecordistas +' pts'
+    r10.innerHTML = array[9].s_nome_listarecordistas + ' -------  ' + array[9].i_pontuacao_listarecordistas +' pts'
 
   })
   .catch(error => {
