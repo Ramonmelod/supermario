@@ -121,7 +121,7 @@
     border: 3px solid aqua;
     position: absolute;
     height: 300px;
-    width: 180px;
+    width: 250px;
     left: 50px;
     top: 100px;
 }
@@ -154,5 +154,80 @@
     right: 5px;
     top: 50px;
     color: black;
+
+}
+.recordistas{
+    color: rgb(7, 12, 17);
+    font-style:normal;
+    font-size: medium;
+    
+
+}
+
+#r01{
+    position: absolute;
+    left: 15px;
+    top: 60px;
+
+}
+
+#r02{
+    position: relative;
+    left: 15px;
+    top: 80px;
+
+}
+#r03{
+    position: relative;
+    left: 15px;
+    top: 80px;
+
+}
+#r04{
+    position: relative;
+    left: 15px;
+    top: 80px;
+
+}
+#r05{
+    position: relative;
+    left: 15px;
+    top: 80px;
+
+}
+#r06{
+    position: relative;
+    left: 15px;
+    top: 80px;
+
+}
+#r07{
+    position: relative;
+    left: 15px;
+    top: 80px;
+
+}
+#r08{
+    position: relative;
+    left: 15px;
+    top: 80px;
+
+}
+#r02{
+    position: relative;
+    left: 15px;
+    top: 80px;
+
+}
+#r09{
+    position: relative;
+    left: 15px;
+    top: 80px;
+
+}
+#r10{
+    position: relative;
+    left: 15px;
+    top: 80px;
 
 }

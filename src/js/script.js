@@ -55,6 +55,8 @@ const digitacao = caixa.addEventListener('keydown', (event) => {
     }
 })
 
+const r01 = document.querySelector('#r01')
+const r02 = document.querySelector('#r02')
 
 fetch('http://localhost:8080')                             //captura dos dados em json da api de leitura e registro de recordes
   .then(response => {
@@ -65,9 +67,13 @@ fetch('http://localhost:8080')                             //captura dos dados e
   })
   .then(data => {
     let primeiraArray = data[0]
+    let segundaArray = data[1]
     
-    console.log(primeiraArray.s_nome_listarecordistas)
-    console.log(primeiraArray.i_pontuacao_listarecordistas)
+    console.log(segundaArray.s_nome_listarecordistas)         //imprimem no console os dados tratados recebido da api  
+    console.log(segundaArray.i_pontuacao_listarecordistas)
+    r01.innerHTML = primeiraArray.s_nome_listarecordistas + ' -------  ' + primeiraArray.i_pontuacao_listarecordistas +' pts'
+    r02.innerHTML = segundaArray.s_nome_listarecordistas + ' -------  ' + segundaArray.i_pontuacao_listarecordistas +' pts'
+
   })
   .catch(error => {
     console.error('Erro:', error)
