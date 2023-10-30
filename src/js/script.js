@@ -66,13 +66,15 @@ fetch('http://localhost:8080')                             //captura dos dados e
     return response.json();
   })
   .then(data => {
-    let primeiraArray = data[0]
-    let segundaArray = data[1]
-    
-    console.log(segundaArray.s_nome_listarecordistas)         //imprimem no console os dados tratados recebido da api  
-    console.log(segundaArray.i_pontuacao_listarecordistas)
-    r01.innerHTML = primeiraArray.s_nome_listarecordistas + ' -------  ' + primeiraArray.i_pontuacao_listarecordistas +' pts'
-    r02.innerHTML = segundaArray.s_nome_listarecordistas + ' -------  ' + segundaArray.i_pontuacao_listarecordistas +' pts'
+    let array = []                                       // declaração da array de elementos que receberá o json da api
+    for (let i = 0; i < data.length; i++) {              // adição dos elementos json para dentro da array
+      array.push(data[i]);
+  }
+  
+    console.log(array[0].s_nome_listarecordistas)         //imprimem no console os dados tratados recebido da api  
+    console.log(array[1].i_pontuacao_listarecordistas)
+    r01.innerHTML = array[0].s_nome_listarecordistas + ' -------  ' + array[0].i_pontuacao_listarecordistas +' pts'
+    r02.innerHTML = array[1].s_nome_listarecordistas + ' -------  ' + array[1].i_pontuacao_listarecordistas +' pts'
 
   })
   .catch(error => {
