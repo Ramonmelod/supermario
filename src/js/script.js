@@ -67,7 +67,7 @@ const r09 = document.querySelector('#r09')
 const r10 = document.querySelector('#r10')
 
 
-fetch('http://localhost:8080')                             //captura dos dados em json da api de leitura e registro de recordes
+fetch('https://ramonmelod-servidor-node-recordistas-mario.vercel.app')                             //captura dos dados em json da api de leitura e registro de recordes
   .then(response => {
     if (!response.ok) {
       throw new Error('Erro na solicitação da API')
