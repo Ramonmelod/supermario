@@ -46,7 +46,7 @@ const nomeDigitado = document.querySelector('.nomeDigitado')
 
 const digitacao = caixa.addEventListener('keydown', (event) => {
     let a = caixa.value
-    if (event.key === 'Enter') {
+    if ((event.key === 'Enter')&&(pontos > 10)) {
         console.log(a)
         if(!pontosControle){
             nomeDigitado.innerHTML = a                      //libera a digitação para a tabela de recordes apenas com o fim do jogo
