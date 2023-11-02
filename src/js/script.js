@@ -1,55 +1,47 @@
-const mario = document.querySelector('.mario');
-const pipe = document.querySelector('.pipe');
-const gameOver = document.querySelector('.gameOver');
-let pontos = 0;
-let pontosControle = true;                         // apenas para controle do registro de pontuação
+const mario = document.querySelector('.mario')
+const pipe = document.querySelector('.pipe')
+const gameOver = document.querySelector('.gameOver')
+let pontos = 0
+let pontosControle = true                        // apenas para controle do registro de pontuação
 
 const jump = ()=>{
-    mario.classList.add('jump');
+    mario.classList.add('jump')
     setTimeout(() => {
-        mario.classList.remove("jump"); //setTimeout faz com que o código espere algum tempo até ir para  a função anônima  
-    }, 1000);
+        mario.classList.remove("jump") //setTimeout faz com que o código espere algum tempo até ir para  a função anônima  
+    }, 1000)
     
 }
 
 const ativaJump = document.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowUp') {
-        jump(); 
+        jump() 
     }
 
 }       )                         
 
 const loop1 = setInterval (() =>{
     
-    const pipePosition = pipe.offsetLeft;        // monitora o posicionamento class pipe
-    const marioPosition = mario.offsetTop;         //monitora o posicionamento class mario
+    const pipePosition = pipe.offsetLeft        // monitora o posicionamento class pipe
+    const marioPosition = mario.offsetTop        //monitora o posicionamento class mario
     if((pipePosition < 65)&&(marioPosition < 353) &&(pontosControle)){  // condição de pontuação
-             pontos++;
-             const mostrarPontos = document.getElementsByClassName('pontuacao')[0];// recebe o primeiro elemento da classe pontos
-             mostrarPontos.innerHTML = pontos;                       // altera o mostrador dos pontos
+             pontos++
+             const mostrarPontos = document.getElementsByClassName('pontuacao')[0]// recebe o primeiro elemento da classe pontos
+             mostrarPontos.innerHTML = pontos                       // altera o mostrador dos pontos
     }
     else if((pipePosition < 65 ) & (marioPosition > 353)){  // condição de game over
             
-            pipe.style.animation = 'none';                       // desliga o movimento do cano
-            gameOver.style.bottom = marioPosition - 330 + 'px'; // concatenação - 350
-            gameOver.style.display ='block';                    // mostra o desenho de game-over do mario
-            mario.style.display = 'none';                       // esconde o gif do mario andando
-            pipe.style.left = pipePosition + 'px';             //concatenação de pipeposition com px
-            pontosControle = false;
+            pipe.style.animation = 'none'                       // desliga o movimento do cano
+            gameOver.style.bottom = marioPosition - 330 + 'px' // concatenação - 350
+            gameOver.style.display ='block'                    // mostra o desenho de game-over do mario
+            mario.style.display = 'none'                       // esconde o gif do mario andando
+            pipe.style.left = pipePosition + 'px'             //concatenação de pipeposition com px
+            pontosControle = false
     
     
 }
-},100);
+},100)
 
-const caixa = document.querySelector('.caixa')               // caixa de dialogo com captura do texto com a tecla enter
-const nomeDigitado = document.querySelector('.nomeDigitado')
 
-const digitacao = caixa.addEventListener('keydown', (event) => {
-    let a = caixa.value
-    if ((event.key === 'Enter')&&(pontos > 10)&&(!pontosControle)) {         // condições inciais: apertar em enter e ter mais de 10 pontos. Ver próxima condição cometário seguinte
-            nomeDigitado.innerHTML = a                                      //libera a digitação para a tabela de recordes apenas com o fim do jogo
-    }
-})
 
 
 let arrayRecordistas = []
@@ -70,12 +62,12 @@ fetch('https://ramonmelod-servidor-node-recordistas-mario.vercel.app')          
     if (!response.ok) {
       throw new Error('Erro na solicitação da API')
     }
-    return response.json();
+    return response.json()
   })
   .then(data => {
     let array = []                                       // declaração da array de elementos que receberá o json da api
     for (let i = 0; i < data.length; i++) {              // adição dos elementos json para dentro da array
-      array.push(data[i]);
+      array.push(data[i])
   }
 
 
@@ -85,9 +77,23 @@ fetch('https://ramonmelod-servidor-node-recordistas-mario.vercel.app')          
 
     }
  
+
+    const caixa = document.querySelector('.caixa')               // caixa de dialogo com captura do texto com a tecla enter
+    const nomeDigitado = document.querySelector('.nomeDigitado')
+    
+    const digitacao = caixa.addEventListener('keydown', (event) => {
+        let a = caixa.value
+        if ((event.key === 'Enter')&&(pontos > 10)&&(!pontosControle)) {         // condições inciais: apertar em enter e ter mais de 10 pontos. Ver próxima condição cometário seguinte
+                nomeDigitado.innerHTML = a                                      //libera a digitação para a tabela de recordes apenas com o fim do jogo
+        }
+    })
+    
+
+
   })
   .catch(error => {
     if(error){                       // if para limitar mensagem de erro para apenas quando houver mensagem de erro
     console.error('Erro:', error)
     }
-  });
+  })
+
