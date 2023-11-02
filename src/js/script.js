@@ -46,12 +46,8 @@ const nomeDigitado = document.querySelector('.nomeDigitado')
 
 const digitacao = caixa.addEventListener('keydown', (event) => {
     let a = caixa.value
-    if (event.key === 'Enter') {
-        console.log(a)
-        if((!pontosControle)&&(pontos >10)){
-           nomeDigitado.innerHTML = a                      //libera a digitação para a tabela de recordes apenas com o fim do jogo
-        }
-        
+    if ((event.key === 'Enter')&&(pontos > 10)&&(!pontosControle)) {         // condições inciais: apertar em enter e ter mais de 10 pontos. Ver próxima condição cometário seguinte
+            nomeDigitado.innerHTML = a                                      //libera a digitação para a tabela de recordes apenas com o fim do jogo
     }
 })
 
@@ -89,6 +85,19 @@ fetch('https://ramonmelod-servidor-node-recordistas-mario.vercel.app')          
     r08.innerHTML = array[7].s_nome_listarecordistas + ' -------  ' + array[7].i_pontuacao_listarecordistas +' pts'
     r09.innerHTML = array[8].s_nome_listarecordistas + ' -------  ' + array[8].i_pontuacao_listarecordistas +' pts'
     r10.innerHTML = array[9].s_nome_listarecordistas + ' -------  ' + array[9].i_pontuacao_listarecordistas +' pts'
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
   })
   .catch(error => {
