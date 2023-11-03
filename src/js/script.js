@@ -82,10 +82,37 @@ fetch('https://ramonmelod-servidor-node-recordistas-mario.vercel.app')          
     const nomeDigitado = document.querySelector('.nomeDigitado')
     
     const digitacao = caixa.addEventListener('keydown', (event) => {
-        let a = caixa.value
+        let recordista = caixa.value                                     // captura o nome do recordista
         if ((event.key === 'Enter')&&(pontos > array[array.length-1].i_pontuacao_listarecordistas)&&(!pontosControle)) {    // condições inciais: apertar em enter e ser maior que o ultimo elemento
-                nomeDigitado.innerHTML = a                                      //libera a digitação para a tabela de recordes apenas com o fim do jogo
-        }
+                
+                
+//------------------------------------Área de Post do código------------------------------------
+
+                const urlPost = 'http://localhost:8080/post'//'https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post' 
+                let nomeDigitado ={
+                    nome:recordista,
+                    pontuacao: pontos
+            
+                }        
+                let cabecalho = {
+                    method:'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                      },
+                    body: JSON.stringify(nomeDigitado)
+                }
+            
+               
+                 fetch(urlPost,cabecalho)
+                 .then(async(res)=>{
+                   await res.json()
+                 })
+                 .then(ret=>{console.log(ret)})
+
+//------------------------------------------------------------------------------------------------------
+                 caixa.value = ''  // apaga o nome digitado na caixa de dialogo
+
+              }
     })
 
   })
