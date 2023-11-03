@@ -3,6 +3,7 @@ const pipe = document.querySelector('.pipe')
 const gameOver = document.querySelector('.gameOver')
 let pontos = 0
 let pontosControle = true                        // apenas para controle do registro de pontuação
+const dialogo = document.querySelector('.dialogo')
 
 const jump = ()=>{
     mario.classList.add('jump')
@@ -111,6 +112,7 @@ fetch('https://ramonmelod-servidor-node-recordistas-mario.vercel.app')          
 
 //------------------------------------------------------------------------------------------------------
                  caixa.value = ''  // apaga o nome digitado na caixa de dialogo
+                 dialogo.innerHTML = 'Parabéns, você está entre os 10 melhores!'
 
               }
     })

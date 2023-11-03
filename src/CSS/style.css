@@ -139,12 +139,12 @@
     top: 330px;
 
 }
-.nomeDigitado{
+.dialogo{
     font-size: large;
     font-weight: 600;
     position: absolute;
-    left: 5px;
-    top: 50px;
+    left: 55px;
+    top: 410px;
 
 }
 .instrucoes{
