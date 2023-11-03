@@ -83,12 +83,10 @@ fetch('https://ramonmelod-servidor-node-recordistas-mario.vercel.app')          
     
     const digitacao = caixa.addEventListener('keydown', (event) => {
         let a = caixa.value
-        if ((event.key === 'Enter')&&(pontos > 10)&&(!pontosControle)) {         // condições inciais: apertar em enter e ter mais de 10 pontos. Ver próxima condição cometário seguinte
+        if ((event.key === 'Enter')&&(pontos > array[array.length-1].i_pontuacao_listarecordistas)&&(!pontosControle)) {    // condições inciais: apertar em enter e ser maior que o ultimo elemento
                 nomeDigitado.innerHTML = a                                      //libera a digitação para a tabela de recordes apenas com o fim do jogo
         }
     })
-    
-
 
   })
   .catch(error => {
