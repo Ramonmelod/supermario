@@ -43,9 +43,6 @@ const loop1 = setInterval (() =>{
 }
 },100)
 
-
-
-
 let arrayRecordistas = []
 
 arrayRecordistas.push(document.querySelector('#r01'))                    // declaração dos elementos html que compõe a lista de recordistas
@@ -61,7 +58,7 @@ arrayRecordistas.push(document.querySelector('#r10'))
 
 const urlGet = 'https://ramonmelod-servidor-node-recordistas-mario.vercel.app'
 
-fetch(process.env.urlGet)                             //captura dos dados em json da api de leitura e registro de recordes
+fetch(urlGet)                             //captura dos dados em json da api de leitura e registro de recordes
   .then(response => {
     if (!response.ok) {
       throw new Error('Erro na solicitação da API')
