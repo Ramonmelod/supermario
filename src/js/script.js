@@ -80,16 +80,15 @@ fetch('https://ramonmelod-servidor-node-recordistas-mario.vercel.app')          
  
 
     const caixa = document.querySelector('.caixa')               // caixa de dialogo com captura do texto com a tecla enter
-    const nomeDigitado = document.querySelector('.nomeDigitado')
     
-    const digitacao = caixa.addEventListener('keydown', (event) => {
+   caixa.addEventListener('keydown', (event) => {
         let recordista = caixa.value                                     // captura o nome do recordista
-        if ((event.key === 'Enter')&&(pontos > array[array.length-1].i_pontuacao_listarecordistas)&&(!pontosControle)) {    // condições inciais: apertar em enter e ser maior que o ultimo elemento
+        if ((pontos > array[array.length-1].i_pontuacao_listarecordistas)&&(!pontosControle)) {    // condições inciais:ser maior que o ultimo elemento e ter morrido
                 
-                
+                dialogo.style.display = 'block'
 //------------------------------------Área de Post do código------------------------------------
-
-                const urlPost = 'http://localhost:8080/post'//'https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post' 
+          if(event.key === 'Enter'){
+                const urlPost = 'https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post'//'http://localhost:8080/post '
                 let nomeDigitado ={
                     nome:recordista,
                     pontuacao: pontos
@@ -112,10 +111,11 @@ fetch('https://ramonmelod-servidor-node-recordistas-mario.vercel.app')          
 
 //------------------------------------------------------------------------------------------------------
                  caixa.value = ''  // apaga o nome digitado na caixa de dialogo
-                 dialogo.innerHTML = 'Parabéns, você está entre os 10 melhores!'
+                 dialogo.style.display = 'block'
+                 dialogo.innerHTML = 'Parabéns, você está entre os 10 melhores!'}
 
               }
-    })
+    }) 
 
   })
   .catch(error => {
