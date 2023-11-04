@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+.fundoGeral{
+    background-color: rgba(200, 186, 161, 0.782);
+    height: 745px;
+
+
+}
 .game-board{
     width: 50%;
     height: 500px;
@@ -137,7 +143,7 @@
 .caixa{
     position: absolute;
     left: 5px;
-    top: 330px;
+    top: 370px;
 
 }
 .dialogo{
@@ -146,7 +152,7 @@
     font-weight: 600;
     position: absolute;
     left: 35px;
-    top: 410px;
+    top: 420px;
 
 }
 .instrucoes{
