@@ -38,8 +38,8 @@ const loop1 = setInterval (() =>{
             mario.style.display = 'none'                       // esconde o gif do mario andando
             pipe.style.left = pipePosition + 'px'             //concatenação de pipeposition com px
             pontosControle = false
-    
-    
+            dialogo.style.display = 'block'
+            
 }
 },100)
 
@@ -71,21 +71,21 @@ fetch(urlGet)                             //captura dos dados em json da api de 
       array.push(data[i])
   }
 
-
-
     for(let i =0; i < array.length; i ++){
       arrayRecordistas[i].innerHTML = array[i].s_nome_listarecordistas + ' -------  ' + array[i].i_pontuacao_listarecordistas +' pts' // mascara impressão lista recordistas
 
     }
- 
 
+    setInterval(()=>{if (pontos > array[array.length-1].i_pontuacao_listarecordistas){
+      dialogo.innerHTML = 'Parabéns! para registro da pontuação <br> digite seu nome e aperte Enter'}},10) //monitora a pontuação para alterar o texto do dialogo 
+ 
     const caixa = document.querySelector('.caixa')               // caixa de dialogo com captura do texto com a tecla enter
     
    caixa.addEventListener('keydown', (event) => {
         let recordista = caixa.value                                     // captura o nome do recordista
-        if ((pontos > array[array.length-1].i_pontuacao_listarecordistas)&&(!pontosControle)) {    // condições inciais:ser maior que o ultimo elemento e ter morrido
-                
-                dialogo.style.display = 'block'
+        if ((pontos > array[array.length-1].i_pontuacao_listarecordistas) && (!pontosControle)) {    // condições inciais:ser maior que o ultimo elemento e ter morrido
+          
+
 //------------------------------------Área de Post do código------------------------------------
           if(event.key === 'Enter'){
                 const urlPost = 'https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post'//'http://localhost:8080/post '
@@ -111,7 +111,6 @@ fetch(urlGet)                             //captura dos dados em json da api de 
 
 //------------------------------------------------------------------------------------------------------
                  caixa.value = ''  // apaga o nome digitado na caixa de dialogo
-                 dialogo.style.display = 'block'
                  dialogo.innerHTML = 'Parabéns, você está entre os 10 melhores!'}
 
               }
