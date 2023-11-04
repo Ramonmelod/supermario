@@ -157,10 +157,10 @@
 }
 .instrucoes{
     font-size:large;
-    font-weight: 300;
+    font-weight: 600;
     position: absolute;
-    right: 5px;
-    top: 50px;
+    right: 37%;
+    top: 520px;
     color: black;
 
 }

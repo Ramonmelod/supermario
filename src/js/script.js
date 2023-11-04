@@ -5,6 +5,7 @@ let pontos = 0
 let pontosControle = true                        // apenas para controle do registro de pontuação
 const dialogo = document.querySelector('.dialogo')
 
+
 const jump = ()=>{
     mario.classList.add('jump')
     setTimeout(() => {
@@ -58,7 +59,9 @@ arrayRecordistas.push(document.querySelector('#r08'))
 arrayRecordistas.push(document.querySelector('#r09'))
 arrayRecordistas.push(document.querySelector('#r10'))
 
-fetch('https://ramonmelod-servidor-node-recordistas-mario.vercel.app')                             //captura dos dados em json da api de leitura e registro de recordes
+const urlGet = 'https://ramonmelod-servidor-node-recordistas-mario.vercel.app'
+
+fetch(process.env.urlGet)                             //captura dos dados em json da api de leitura e registro de recordes
   .then(response => {
     if (!response.ok) {
       throw new Error('Erro na solicitação da API')
