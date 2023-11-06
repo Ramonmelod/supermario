@@ -4,6 +4,7 @@ const gameOver = document.querySelector('.gameOver')
 let pontos = 0
 let pontosControle = true                        // apenas para controle do registro de pontuação
 const dialogo = document.querySelector('.dialogo')
+let animationTime = 2                           // tempo que o cano leva pa
 
 
 const jump = ()=>{
@@ -19,16 +20,21 @@ const ativaJump = document.addEventListener('keydown', (event) => {
         jump() 
     }
 
-}       )                         
+}       )        
+
+
 
 const loop1 = setInterval (() =>{
-    
+    animationTime = animationTime - 0.0005          //decremento da variavel animationTime. Isto acelera o cano
+    pipe.style.animation = `pipe-animation ${animationTime}s infinite linear`
     const pipePosition = pipe.offsetLeft        // monitora o posicionamento class pipe
     const marioPosition = mario.offsetTop        //monitora o posicionamento class mario
     if((pipePosition < 65)&&(marioPosition < 353) &&(pontosControle)){  // condição de pontuação
              pontos++
              const mostrarPontos = document.getElementsByClassName('pontuacao')[0]// recebe o primeiro elemento da classe pontos
              mostrarPontos.innerHTML = pontos                       // altera o mostrador dos pontos
+             
+
     }
     else if((pipePosition < 65 ) & (marioPosition > 353)){  // condição de game over
             
@@ -42,6 +48,9 @@ const loop1 = setInterval (() =>{
             
 }
 },100)
+
+
+
 
 let arrayRecordistas = []
 

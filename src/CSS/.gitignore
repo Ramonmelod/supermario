@@ -1,2 +1,4 @@
 #ignorar .env
 .env
+netlify.toml
+package.json
