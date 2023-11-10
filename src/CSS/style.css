@@ -5,7 +5,7 @@
 }
 .fundoGeral{
     background-color: rgba(200, 186, 161, 0.782);
-    height: 745px;
+    height: 914px;
 
 
 }
@@ -144,6 +144,8 @@
     position: absolute;
     left: 15px;
     top: 370px;
+    width: 200px;
+    height: 25px;
 
 }
 .dialogo{
