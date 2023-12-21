@@ -6,6 +6,8 @@ let pontosControle = true                        // apenas para controle do regi
 const dialogo = document.querySelector('.dialogo')
 let animationTime = 2                           // tempo que o cano leva pa
 
+let btnEnterControle = true                    // controla se o botão enter para envio do nome do jogador já foi apertado
+
 
 const jump = ()=>{
     mario.classList.add('jump')
@@ -46,6 +48,8 @@ const loop1 = setInterval (() =>{
             pontosControle = false
             dialogo.style.display = 'block'
             
+            
+            
 }
 },100)
 
@@ -85,18 +89,21 @@ fetch(urlGet)                             //captura dos dados em json da api de 
 
     }
 
-    setInterval(()=>{if (pontos > array[array.length-1].i_pontuacao_listarecordistas){
-      dialogo.innerHTML = 'Parabéns! para registro da pontuação <br> digite seu nome e aperte Enter'}},10) //monitora a pontuação para alterar o texto do dialogo 
+    setInterval(()=>{if (pontos > array[array.length-1].i_pontuacao_listarecordistas&&(btnEnterControle)){
+      dialogo.innerHTML = 'Parabéns! para registro da pontuação <br> digite seu nome e aperte Enter'
+      
+    }},10) //monitora a pontuação para alterar o texto do dialogo 
  
     const caixa = document.querySelector('.caixa')               // caixa de dialogo com captura do texto com a tecla enter
     
-   caixa.addEventListener('keydown', (event) => {
-        let recordista = caixa.value                                     // captura o nome do recordista
-        if ((pontos > array[array.length-1].i_pontuacao_listarecordistas) && (!pontosControle)) {    // condições inciais:ser maior que o ultimo elemento e ter morrido
+   caixa.addEventListener('keydown', (event) => { // captura o nome do recordista
+        let recordista = caixa.value                                
+        if ((pontos > array[array.length-1].i_pontuacao_listarecordistas) && (!pontosControle)&&(btnEnterControle)) {    // condições inciais:ser maior que o ultimo elemento e ter morrido
           
 
 //------------------------------------Área de Post do código------------------------------------
           if(event.key === 'Enter'){
+                btnEnterControle = false
                 const urlPost = 'https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post'//'http://localhost:8080/post '
                 let nomeDigitado ={
                     nome:recordista,
@@ -113,16 +120,21 @@ fetch(urlGet)                             //captura dos dados em json da api de 
             
                
                  fetch(urlPost,cabecalho)
-                 .then(async(res)=>{
-                   await res.json()
-                 })
-                 .then(ret=>{console.log(ret)})
-
+                 .catch(error => {
+                  console.error('Erro na solicitação:', error);
+              })
+              
+                 
 //------------------------------------------------------------------------------------------------------
                  caixa.value = ''  // apaga o nome digitado na caixa de dialogo
-                 dialogo.innerHTML = 'Parabéns, você está entre os 10 melhores!'}
+                 dialogo.innerHTML = 'Parabéns, você está entre os 10 melhores!'   // atualiza a mensagem para o jogador
+
+                 
+                }
+                 
 
               }
+              
     }) 
 
   })
