@@ -114,15 +114,6 @@
     font-family: fantasy;
 
 }
-.pix{
-    position: absolute;
-    left: 10%;
-    top:3%;
-    color: rgb(246, 248, 242);
-    font-size: large;
-    font-weight: 300;
-    font-family: fantasy;
-}
 .recordes{
     border: 3px solid #aed4f8;
     background-color: rgb(137, 179, 179);

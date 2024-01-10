@@ -69,7 +69,7 @@ arrayRecordistas.push(document.querySelector('#r08'))
 arrayRecordistas.push(document.querySelector('#r09'))
 arrayRecordistas.push(document.querySelector('#r10'))
 
-const urlGet = 'https://ramonmelod-servidor-node-recordistas-mario.vercel.app'
+const urlGet ='https://ramonmelod-servidor-node-recordistas-mario.vercel.app' //'http://localhost:8080' //
 
 fetch(urlGet)                             //captura dos dados em json da api de leitura e registro de recordes
   .then(response => {
@@ -104,7 +104,7 @@ fetch(urlGet)                             //captura dos dados em json da api de 
 //------------------------------------Área de Post do código------------------------------------
           if(event.key === 'Enter'){
                 btnEnterControle = false
-                const urlPost = 'https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post'//'http://localhost:8080/post '
+                const urlPost = 'https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post' //'http://localhost:8080/post '
                 let nomeDigitado ={
                     nome:recordista,
                     pontuacao: pontos
@@ -143,4 +143,3 @@ fetch(urlGet)                             //captura dos dados em json da api de 
     console.error('Erro:', error)
     }
   })
-
