@@ -46,18 +46,13 @@ const loop1 = setInterval(() => {
 
 let arrayRecordistas = [];
 
-arrayRecordistas.push(document.querySelector("#r01")); // declaração dos elementos html que compõe a lista de recordistas
-arrayRecordistas.push(document.querySelector("#r02"));
-arrayRecordistas.push(document.querySelector("#r03"));
-arrayRecordistas.push(document.querySelector("#r04"));
-arrayRecordistas.push(document.querySelector("#r05"));
-arrayRecordistas.push(document.querySelector("#r06"));
-arrayRecordistas.push(document.querySelector("#r07"));
-arrayRecordistas.push(document.querySelector("#r08"));
-arrayRecordistas.push(document.querySelector("#r09"));
-arrayRecordistas.push(document.querySelector("#r10"));
+for (i = 1; i < 11; i++) {
+  arrayRecordistas.push(document.querySelector(`#r0${i}`)); // declaração dos elementos html que compõe a lista de recordistas
+}
 
-const urlGet = "https://ramonmelod-servidor-node-recordistas-mario.vercel.app"; //'http://localhost:8080' //
+const urlGet =
+  "https://ramonmelod-servidor-node-recordistas-mario.vercel.app" ||
+  "http://localhost:8080";
 
 fetch(urlGet) //captura dos dados em json da api de leitura e registro de recordes
   .then((response) => {
