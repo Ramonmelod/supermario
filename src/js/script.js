@@ -1,9 +1,10 @@
 import { query } from "./query.js";
+const urlGet =
+  "https://ramonmelod-servidor-node-recordistas-mario.vercel.app" ||
+  "http://localhost:8080";
 
 const run = async () => {
-  const module = document.querySelector(".module");
-
-  const call = await query();
+  const call = await query(urlGet);
   console.log(call);
 };
 
@@ -60,10 +61,6 @@ let arrayRecordistas = [];
 for (let i = 1; i < 11; i++) {
   arrayRecordistas.push(document.querySelector(`#r0${i}`)); // declaração dos elementos html que compõe a lista de recordistas
 }
-
-const urlGet =
-  "https://ramonmelod-servidor-node-recordistas-mario.vercel.app" ||
-  "http://localhost:8080";
 
 fetch(urlGet) //captura dos dados em json da api de leitura e registro de recordes
   .then((response) => {
