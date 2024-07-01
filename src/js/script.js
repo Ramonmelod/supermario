@@ -1,9 +1,11 @@
 import { query } from "./query.js";
+import { save } from "./post.js";
 const urlGet =
   "https://ramonmelod-servidor-node-recordistas-mario.vercel.app" ||
   "http://localhost:8080";
 const urlPost =
-  "https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post"; //'http://localhost:8080/post '
+  "https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post" ||
+  "http://localhost:8080/post ";
 
 const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
@@ -60,17 +62,17 @@ for (let i = 1; i < 11; i++) {
 const getRecordistsList = async () => {
   //função que recebe resultado da consulta feita pelo modulo query.js
   const call = await query(urlGet);
-  console.log(call);
+
   return call;
 };
 
-getRecordistsList().then((call) => {
+getRecordistsList().then((data) => {
   // mascara impressão lista recordistas
-  for (let i = 0; i < call.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     dataRecordistas[i].innerHTML =
-      call[i].s_nome_listarecordistas +
+      data[i].s_nome_listarecordistas +
       " -------  " +
-      call[i].i_pontuacao_listarecordistas +
+      data[i].i_pontuacao_listarecordistas +
       " pts";
   }
 });
@@ -88,6 +90,10 @@ getRecordistsList().then((data) => {
   }, 10);
 });
 
+const add = async (rec, pts, urlP) => {
+  // Função que chama modulo que posta novo recordista
+  const store = await save(rec, pts, urlP);
+};
 getRecordistsList().then((data) => {
   //envio do novo recordista
   const caixa = document.querySelector(".caixa"); // caixa de dialogo com captura do texto com a tecla enter
@@ -105,27 +111,10 @@ getRecordistsList().then((data) => {
       ) {
         // condições inciais:ser maior que o ultimo elemento e ter morrido
 
-        //------------------------------------Área de Post do código------------------------------------
         if (event.key === "Enter") {
           btnEnterControle = false;
+          add(recordista, pontos, urlPost); //----------------- chamada da função que faz o post
 
-          let nomeDigitado = {
-            nome: recordista,
-            pontuacao: pontos,
-          };
-          let cabecalho = {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(nomeDigitado),
-          };
-
-          fetch(urlPost, cabecalho).catch((error) => {
-            console.error("Erro na solicitação:", error);
-          });
-
-          //------------------------------------------------------------------------------------------------------
           caixa.value = ""; // apaga o nome digitado na caixa de dialogo
           dialogo.innerHTML = "Parabéns, você está entre os 10 melhores!"; // atualiza a mensagem para o jogador
         }
