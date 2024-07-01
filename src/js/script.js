@@ -57,9 +57,13 @@ for (let i = 1; i < 11; i++) {
   dataRecordistas.push(document.querySelector(`#r0${i}`)); // declaração dos elementos html que compõe a lista de recordistas
 }
 
-const get = async () => {
+const getRecordistsList = async () => {
   const call = await query(urlGet);
   console.log(call);
+  return call;
+};
+
+getRecordistsList().then((call) => {
   for (let i = 0; i < call.length; i++) {
     dataRecordistas[i].innerHTML =
       call[i].s_nome_listarecordistas +
@@ -67,9 +71,20 @@ const get = async () => {
       call[i].i_pontuacao_listarecordistas +
       " pts"; // mascara impressão lista recordistas
   }
-};
+});
 
-get();
+getRecordistsList().then((data) => {
+  //monitora a pontuação para alterar o texto do dialogo
+  setInterval(() => {
+    if (
+      pontos > data[data.length - 1].i_pontuacao_listarecordistas &&
+      btnEnterControle
+    ) {
+      dialogo.innerHTML =
+        "Parabéns! para registro da pontuação <br> digite seu nome e aperte Enter";
+    }
+  }, 10);
+});
 
 /*
 
