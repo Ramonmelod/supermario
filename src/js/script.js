@@ -7,7 +7,7 @@ const urlPost =
 
 const run = async () => {
   const call = await query(urlGet);
-  console.log(call);
+  //console.log(call);
 };
 
 run();
@@ -58,10 +58,10 @@ const loop1 = setInterval(() => {
   }
 }, 100);
 
-let arrayRecordistas = [];
+let dataRecordistas = [];
 
 for (let i = 1; i < 11; i++) {
-  arrayRecordistas.push(document.querySelector(`#r0${i}`)); // declaração dos elementos html que compõe a lista de recordistas
+  dataRecordistas.push(document.querySelector(`#r0${i}`)); // declaração dos elementos html que compõe a lista de recordistas
 }
 
 fetch(urlGet) //captura dos dados em json da api de leitura e registro de recordes
@@ -72,23 +72,18 @@ fetch(urlGet) //captura dos dados em json da api de leitura e registro de record
     return response.json();
   })
   .then((data) => {
-    let array = []; // declaração da array de elementos que receberá o json da api
+    console.log("tamanho do data: " + data.length); // retorno no console do comprimento do data
     for (let i = 0; i < data.length; i++) {
-      // adição dos elementos json para dentro da array
-      array.push(data[i]);
-    }
-    console.log("tamanho do array: " + array.length); // retorno no console do comprimento do array
-    for (let i = 0; i < array.length; i++) {
-      arrayRecordistas[i].innerHTML =
-        array[i].s_nome_listarecordistas +
+      dataRecordistas[i].innerHTML =
+        data[i].s_nome_listarecordistas +
         " -------  " +
-        array[i].i_pontuacao_listarecordistas +
+        data[i].i_pontuacao_listarecordistas +
         " pts"; // mascara impressão lista recordistas
     }
 
     setInterval(() => {
       if (
-        pontos > array[array.length - 1].i_pontuacao_listarecordistas &&
+        pontos > data[data.length - 1].i_pontuacao_listarecordistas &&
         btnEnterControle
       ) {
         dialogo.innerHTML =
@@ -103,8 +98,8 @@ fetch(urlGet) //captura dos dados em json da api de leitura e registro de record
       let recordista = caixa.value;
 
       if (
-        (pontos > array[array.length - 1].i_pontuacao_listarecordistas) |
-          (array.length < 10) && // condição true caso haja menos que 10 recordistas
+        (pontos > data[data.length - 1].i_pontuacao_listarecordistas) |
+          (data.length < 10) && // condição true caso haja menos que 10 recordistas
         !pontosControle &&
         btnEnterControle
       ) {
