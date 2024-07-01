@@ -2,6 +2,8 @@ import { query } from "./query.js";
 const urlGet =
   "https://ramonmelod-servidor-node-recordistas-mario.vercel.app" ||
   "http://localhost:8080";
+const urlPost =
+  "https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post"; //'http://localhost:8080/post '
 
 const run = async () => {
   const call = await query(urlGet);
@@ -111,8 +113,7 @@ fetch(urlGet) //captura dos dados em json da api de leitura e registro de record
         //------------------------------------Área de Post do código------------------------------------
         if (event.key === "Enter") {
           btnEnterControle = false;
-          const urlPost =
-            "https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post"; //'http://localhost:8080/post '
+
           let nomeDigitado = {
             nome: recordista,
             pontuacao: pontos,
