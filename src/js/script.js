@@ -1,3 +1,14 @@
+import { query } from "./query.js";
+
+const run = async () => {
+  const module = document.querySelector(".module");
+
+  const call = await query();
+  console.log(call);
+};
+
+run();
+
 const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
 const gameOver = document.querySelector(".gameOver");
@@ -46,7 +57,7 @@ const loop1 = setInterval(() => {
 
 let arrayRecordistas = [];
 
-for (i = 1; i < 11; i++) {
+for (let i = 1; i < 11; i++) {
   arrayRecordistas.push(document.querySelector(`#r0${i}`)); // declaração dos elementos html que compõe a lista de recordistas
 }
 
