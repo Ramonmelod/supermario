@@ -58,18 +58,20 @@ for (let i = 1; i < 11; i++) {
 }
 
 const getRecordistsList = async () => {
+  //função que recebe resultado da consulta feita pelo modulo query.js
   const call = await query(urlGet);
   console.log(call);
   return call;
 };
 
 getRecordistsList().then((call) => {
+  // mascara impressão lista recordistas
   for (let i = 0; i < call.length; i++) {
     dataRecordistas[i].innerHTML =
       call[i].s_nome_listarecordistas +
       " -------  " +
       call[i].i_pontuacao_listarecordistas +
-      " pts"; // mascara impressão lista recordistas
+      " pts";
   }
 });
 
@@ -86,40 +88,12 @@ getRecordistsList().then((data) => {
   }, 10);
 });
 
-/*
+getRecordistsList().then((data) => {
+  //envio do novo recordista
+  const caixa = document.querySelector(".caixa"); // caixa de dialogo com captura do texto com a tecla enter
 
-fetch(urlGet) //captura dos dados em json da api de leitura e registro de recordes
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Erro na solicitação da API");
-    }
-    return response.json();
-  })
-  .then((data) => {
-    console.log("tamanho do data: " + data.length); // retorno no console do comprimento do data
-    for (let i = 0; i < data.length; i++) {
-      dataRecordistas[i].innerHTML =
-        data[i].s_nome_listarecordistas +
-        " -------  " +
-        data[i].i_pontuacao_listarecordistas +
-        " pts"; // mascara impressão lista recordistas
-    }
-*/
-
-/*
-    setInterval(() => {
-      if (
-        pontos > data[data.length - 1].i_pontuacao_listarecordistas &&
-        btnEnterControle
-      ) {
-        dialogo.innerHTML =
-          "Parabéns! para registro da pontuação <br> digite seu nome e aperte Enter";
-      }
-    }, 10); //monitora a pontuação para alterar o texto do dialogo
-
-    const caixa = document.querySelector(".caixa"); // caixa de dialogo com captura do texto com a tecla enter
-
-    caixa.addEventListener("keydown", (event) => {
+  caixa
+    .addEventListener("keydown", (event) => {
       // captura o nome do recordista
       let recordista = caixa.value;
 
@@ -156,12 +130,11 @@ fetch(urlGet) //captura dos dados em json da api de leitura e registro de record
           dialogo.innerHTML = "Parabéns, você está entre os 10 melhores!"; // atualiza a mensagem para o jogador
         }
       }
+    })
+    .catch((error) => {
+      if (error) {
+        // if para limitar mensagem de erro para apenas quando houver mensagem de erro
+        console.error("Erro:", error);
+      }
     });
-  })
-  .catch((error) => {
-    if (error) {
-      // if para limitar mensagem de erro para apenas quando houver mensagem de erro
-      console.error("Erro:", error);
-    }
-  });
-*/
+});
