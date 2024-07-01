@@ -5,13 +5,6 @@ const urlGet =
 const urlPost =
   "https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post"; //'http://localhost:8080/post '
 
-const run = async () => {
-  const call = await query(urlGet);
-  //console.log(call);
-};
-
-run();
-
 const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
 const gameOver = document.querySelector(".gameOver");
@@ -64,6 +57,22 @@ for (let i = 1; i < 11; i++) {
   dataRecordistas.push(document.querySelector(`#r0${i}`)); // declaração dos elementos html que compõe a lista de recordistas
 }
 
+const get = async () => {
+  const call = await query(urlGet);
+  console.log(call);
+  for (let i = 0; i < call.length; i++) {
+    dataRecordistas[i].innerHTML =
+      call[i].s_nome_listarecordistas +
+      " -------  " +
+      call[i].i_pontuacao_listarecordistas +
+      " pts"; // mascara impressão lista recordistas
+  }
+};
+
+get();
+
+/*
+
 fetch(urlGet) //captura dos dados em json da api de leitura e registro de recordes
   .then((response) => {
     if (!response.ok) {
@@ -80,7 +89,9 @@ fetch(urlGet) //captura dos dados em json da api de leitura e registro de record
         data[i].i_pontuacao_listarecordistas +
         " pts"; // mascara impressão lista recordistas
     }
+*/
 
+/*
     setInterval(() => {
       if (
         pontos > data[data.length - 1].i_pontuacao_listarecordistas &&
@@ -138,3 +149,4 @@ fetch(urlGet) //captura dos dados em json da api de leitura e registro de record
       console.error("Erro:", error);
     }
   });
+*/
