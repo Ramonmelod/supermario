@@ -1,5 +1,7 @@
 import { query } from "./query.js";
 import { save } from "./post.js";
+import { controller } from "./controller.js";
+
 const urlGet =
   "https://ramonmelod-servidor-node-recordistas-mario.vercel.app" ||
   "http://localhost:8080";
@@ -10,48 +12,29 @@ const urlPost =
 const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
 const gameOver = document.querySelector(".gameOver");
-let pontos = 0;
-let pontosControle = true; // apenas para controle do registro de pontuação
 const dialogo = document.querySelector(".dialogo");
+const mostrarPontos = document.getElementsByClassName("pontuacao")[0]; // recebe o primeiro elemento da classe pontos
+let pontos = 0;
 let animationTime = 2; // tempo que o cano leva pa
-
+let pontosControle = true; // apenas para controle do registro de pontuação
 let btnEnterControle = true; // controla se o botão enter para envio do nome do jogador já foi apertado
-
-const jump = () => {
-  mario.classList.add("jump");
-  setTimeout(() => {
-    mario.classList.remove("jump"); //setTimeout faz com que o código espere algum tempo até ir para  a função anônima
-  }, 1000);
+export const pontosIncremento = () => {
+  pontos++;
+  return pontos; // retorna o valor da variavel pontos para o controller.js
 };
-
-const ativaJump = document.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowUp") {
-    jump();
-  }
-});
-
-const loop1 = setInterval(() => {
-  animationTime = animationTime - 0.0005; //decremento da variavel animationTime. Isto acelera o cano
-  pipe.style.animation = `pipe-animation ${animationTime}s infinite linear`;
-  const pipePosition = pipe.offsetLeft; // monitora o posicionamento class pipe
-  const marioPosition = mario.offsetTop; //monitora o posicionamento class mario
-  if (pipePosition < 65 && marioPosition < 353 && pontosControle) {
-    // condição de pontuação
-    pontos++;
-    const mostrarPontos = document.getElementsByClassName("pontuacao")[0]; // recebe o primeiro elemento da classe pontos
-    mostrarPontos.innerHTML = pontos; // altera o mostrador dos pontos
-  } else if ((pipePosition < 65) & (marioPosition > 353)) {
-    // condição de game over
-
-    pipe.style.animation = "none"; // desliga o movimento do cano
-    gameOver.style.bottom = marioPosition - 330 + "px"; // concatenação - 350
-    gameOver.style.display = "block"; // mostra o desenho de game-over do mario
-    mario.style.display = "none"; // esconde o gif do mario andando
-    pipe.style.left = pipePosition + "px"; //concatenação de pipeposition com px
-    pontosControle = false;
-    dialogo.style.display = "block";
-  }
-}, 100);
+export const pontosControleAlter = () => {
+  pontosControle = false;
+};
+controller(
+  mario,
+  pipe,
+  gameOver,
+  dialogo,
+  pontos,
+  animationTime,
+  pontosControle,
+  mostrarPontos
+);
 
 let dataRecordistas = [];
 
@@ -79,7 +62,9 @@ getRecordistsList().then((data) => {
 
 getRecordistsList().then((data) => {
   //monitora a pontuação para alterar o texto do dialogo
+
   setInterval(() => {
+    console.log(pontos);
     if (
       pontos > data[data.length - 1].i_pontuacao_listarecordistas &&
       btnEnterControle
@@ -96,6 +81,9 @@ const add = async (rec, pts, urlP) => {
 };
 getRecordistsList().then((data) => {
   //envio do novo recordista
+  console.log(pontos);
+  //console.log(data[data.length - 1].i_pontuacao_listarecordistas);
+  //console.log(btnEnterControle);
   const caixa = document.querySelector(".caixa"); // caixa de dialogo com captura do texto com a tecla enter
 
   caixa
@@ -105,7 +93,7 @@ getRecordistsList().then((data) => {
 
       if (
         (pontos > data[data.length - 1].i_pontuacao_listarecordistas) |
-          (data.length < 10) && // condição true caso haja menos que 10 recordistas
+          (data.length < 11) && // condição true caso haja menos que 10 recordistas
         !pontosControle &&
         btnEnterControle
       ) {
