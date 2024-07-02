@@ -1,5 +1,7 @@
 import { query } from "./query.js";
 import { save } from "./post.js";
+import { controller } from "./controller.js";
+
 const urlGet =
   "https://ramonmelod-servidor-node-recordistas-mario.vercel.app" ||
   "http://localhost:8080";
@@ -14,10 +16,12 @@ let pontos = 0;
 let pontosControle = true; // apenas para controle do registro de pontuação
 const dialogo = document.querySelector(".dialogo");
 let animationTime = 2; // tempo que o cano leva pa
-
 let btnEnterControle = true; // controla se o botão enter para envio do nome do jogador já foi apertado
 
-const jump = () => {
+controller(); // chama a função controller do modulo controller.js
+
+//------------------------movimento------------------------------------------------
+/*const jump = () => {
   mario.classList.add("jump");
   setTimeout(() => {
     mario.classList.remove("jump"); //setTimeout faz com que o código espere algum tempo até ir para  a função anônima
@@ -28,7 +32,7 @@ const ativaJump = document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowUp") {
     jump();
   }
-});
+});*/
 
 const loop1 = setInterval(() => {
   animationTime = animationTime - 0.0005; //decremento da variavel animationTime. Isto acelera o cano
@@ -52,6 +56,8 @@ const loop1 = setInterval(() => {
     dialogo.style.display = "block";
   }
 }, 100);
+
+//------------------------movimento-------------------------------------
 
 let dataRecordistas = [];
 
