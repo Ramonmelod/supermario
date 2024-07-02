@@ -12,33 +12,22 @@ const urlPost =
 const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
 const gameOver = document.querySelector(".gameOver");
-let pontos = 0;
-let pontosControle = true; // apenas para controle do registro de pontuação
 const dialogo = document.querySelector(".dialogo");
+let pontos = 0;
 let animationTime = 2; // tempo que o cano leva pa
+let pontosControle = true; // apenas para controle do registro de pontuação
 let btnEnterControle = true; // controla se o botão enter para envio do nome do jogador já foi apertado
 
 controller(); // chama a função controller do modulo controller.js
 
-//------------------------movimento------------------------------------------------
-/*const jump = () => {
-  mario.classList.add("jump");
-  setTimeout(() => {
-    mario.classList.remove("jump"); //setTimeout faz com que o código espere algum tempo até ir para  a função anônima
-  }, 1000);
-};
-
-const ativaJump = document.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowUp") {
-    jump();
-  }
-});*/
-
+//------------------------movimento-------------------------------------
 const loop1 = setInterval(() => {
-  animationTime = animationTime - 0.0005; //decremento da variavel animationTime. Isto acelera o cano
-  pipe.style.animation = `pipe-animation ${animationTime}s infinite linear`;
   const pipePosition = pipe.offsetLeft; // monitora o posicionamento class pipe
   const marioPosition = mario.offsetTop; //monitora o posicionamento class mario
+
+  animationTime = animationTime - 0.0005; //decremento da variavel animationTime. Isto acelera o cano
+  pipe.style.animation = `pipe-animation ${animationTime}s infinite linear`;
+
   if (pipePosition < 65 && marioPosition < 353 && pontosControle) {
     // condição de pontuação
     pontos++;
