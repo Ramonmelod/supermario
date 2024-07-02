@@ -13,13 +13,30 @@ const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
 const gameOver = document.querySelector(".gameOver");
 const dialogo = document.querySelector(".dialogo");
+const mostrarPontos = document.getElementsByClassName("pontuacao")[0]; // recebe o primeiro elemento da classe pontos
 let pontos = 0;
 let animationTime = 2; // tempo que o cano leva pa
 let pontosControle = true; // apenas para controle do registro de pontuação
 let btnEnterControle = true; // controla se o botão enter para envio do nome do jogador já foi apertado
+export const pontosIncremento = () => {
+  pontos++;
+  return pontos; // retorna o valor da variavel pontos para o controller.js
+};
+export const pontosControleAlter = () => {
+  pontosControle = false;
+};
+controller(
+  mario,
+  pipe,
+  gameOver,
+  dialogo,
+  pontos,
+  animationTime,
+  pontosControle,
+  mostrarPontos
+);
 
-controller(); // chama a função controller do modulo controller.js
-
+/*
 //------------------------movimento-------------------------------------
 const loop1 = setInterval(() => {
   const pipePosition = pipe.offsetLeft; // monitora o posicionamento class pipe
@@ -44,7 +61,7 @@ const loop1 = setInterval(() => {
     pontosControle = false;
     dialogo.style.display = "block";
   }
-}, 100);
+}, 100);*/
 
 //------------------------movimento-------------------------------------
 
@@ -74,7 +91,9 @@ getRecordistsList().then((data) => {
 
 getRecordistsList().then((data) => {
   //monitora a pontuação para alterar o texto do dialogo
+
   setInterval(() => {
+    console.log(pontos);
     if (
       pontos > data[data.length - 1].i_pontuacao_listarecordistas &&
       btnEnterControle
@@ -91,6 +110,9 @@ const add = async (rec, pts, urlP) => {
 };
 getRecordistsList().then((data) => {
   //envio do novo recordista
+  console.log(pontos);
+  //console.log(data[data.length - 1].i_pontuacao_listarecordistas);
+  //console.log(btnEnterControle);
   const caixa = document.querySelector(".caixa"); // caixa de dialogo com captura do texto com a tecla enter
 
   caixa
@@ -100,7 +122,7 @@ getRecordistsList().then((data) => {
 
       if (
         (pontos > data[data.length - 1].i_pontuacao_listarecordistas) |
-          (data.length < 10) && // condição true caso haja menos que 10 recordistas
+          (data.length < 11) && // condição true caso haja menos que 10 recordistas
         !pontosControle &&
         btnEnterControle
       ) {
