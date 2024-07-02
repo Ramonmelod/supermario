@@ -1,3 +1,12 @@
+import { query } from "./query.js";
+import { save } from "./post.js";
+const urlGet =
+  "https://ramonmelod-servidor-node-recordistas-mario.vercel.app" ||
+  "http://localhost:8080";
+const urlPost =
+  "https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post" ||
+  "http://localhost:8080/post ";
+
 const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
 const gameOver = document.querySelector(".gameOver");
@@ -44,93 +53,77 @@ const loop1 = setInterval(() => {
   }
 }, 100);
 
-let arrayRecordistas = [];
+let dataRecordistas = [];
 
-for (i = 1; i < 11; i++) {
-  arrayRecordistas.push(document.querySelector(`#r0${i}`)); // declaração dos elementos html que compõe a lista de recordistas
+for (let i = 1; i < 11; i++) {
+  dataRecordistas.push(document.querySelector(`#r0${i}`)); // declaração dos elementos html que compõe a lista de recordistas
 }
 
-const urlGet =
-  "https://ramonmelod-servidor-node-recordistas-mario.vercel.app" ||
-  "http://localhost:8080";
+const getRecordistsList = async () => {
+  //função que recebe resultado da consulta feita pelo modulo query.js
+  const call = await query(urlGet);
 
-fetch(urlGet) //captura dos dados em json da api de leitura e registro de recordes
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Erro na solicitação da API");
+  return call;
+};
+
+getRecordistsList().then((data) => {
+  // mascara impressão lista recordistas
+  for (let i = 0; i < data.length; i++) {
+    dataRecordistas[i].innerHTML =
+      data[i].s_nome_listarecordistas +
+      " -------  " +
+      data[i].i_pontuacao_listarecordistas +
+      " pts";
+  }
+});
+
+getRecordistsList().then((data) => {
+  //monitora a pontuação para alterar o texto do dialogo
+  setInterval(() => {
+    if (
+      pontos > data[data.length - 1].i_pontuacao_listarecordistas &&
+      btnEnterControle
+    ) {
+      dialogo.innerHTML =
+        "Parabéns! para registro da pontuação <br> digite seu nome e aperte Enter";
     }
-    return response.json();
-  })
-  .then((data) => {
-    let array = []; // declaração da array de elementos que receberá o json da api
-    for (let i = 0; i < data.length; i++) {
-      // adição dos elementos json para dentro da array
-      array.push(data[i]);
-    }
-    console.log("tamanho do array: " + array.length); // retorno no console do comprimento do array
-    for (let i = 0; i < array.length; i++) {
-      arrayRecordistas[i].innerHTML =
-        array[i].s_nome_listarecordistas +
-        " -------  " +
-        array[i].i_pontuacao_listarecordistas +
-        " pts"; // mascara impressão lista recordistas
-    }
+  }, 10);
+});
 
-    setInterval(() => {
-      if (
-        pontos > array[array.length - 1].i_pontuacao_listarecordistas &&
-        btnEnterControle
-      ) {
-        dialogo.innerHTML =
-          "Parabéns! para registro da pontuação <br> digite seu nome e aperte Enter";
-      }
-    }, 10); //monitora a pontuação para alterar o texto do dialogo
+const add = async (rec, pts, urlP) => {
+  // Função que chama modulo que posta novo recordista
+  const store = await save(rec, pts, urlP);
+};
+getRecordistsList().then((data) => {
+  //envio do novo recordista
+  const caixa = document.querySelector(".caixa"); // caixa de dialogo com captura do texto com a tecla enter
 
-    const caixa = document.querySelector(".caixa"); // caixa de dialogo com captura do texto com a tecla enter
-
-    caixa.addEventListener("keydown", (event) => {
+  caixa
+    .addEventListener("keydown", (event) => {
       // captura o nome do recordista
       let recordista = caixa.value;
 
       if (
-        (pontos > array[array.length - 1].i_pontuacao_listarecordistas) |
-          (array.length < 10) && // condição true caso haja menos que 10 recordistas
+        (pontos > data[data.length - 1].i_pontuacao_listarecordistas) |
+          (data.length < 10) && // condição true caso haja menos que 10 recordistas
         !pontosControle &&
         btnEnterControle
       ) {
         // condições inciais:ser maior que o ultimo elemento e ter morrido
 
-        //------------------------------------Área de Post do código------------------------------------
         if (event.key === "Enter") {
           btnEnterControle = false;
-          const urlPost =
-            "https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post"; //'http://localhost:8080/post '
-          let nomeDigitado = {
-            nome: recordista,
-            pontuacao: pontos,
-          };
-          let cabecalho = {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(nomeDigitado),
-          };
+          add(recordista, pontos, urlPost); //----------------- chamada da função que faz o post
 
-          fetch(urlPost, cabecalho).catch((error) => {
-            console.error("Erro na solicitação:", error);
-          });
-
-          //------------------------------------------------------------------------------------------------------
           caixa.value = ""; // apaga o nome digitado na caixa de dialogo
           dialogo.innerHTML = "Parabéns, você está entre os 10 melhores!"; // atualiza a mensagem para o jogador
         }
       }
+    })
+    .catch((error) => {
+      if (error) {
+        // if para limitar mensagem de erro para apenas quando houver mensagem de erro
+        console.error("Erro:", error);
+      }
     });
-  })
-  .catch((error) => {
-    if (error) {
-      // if para limitar mensagem de erro para apenas quando houver mensagem de erro
-      console.error("Erro:", error);
-    }
-  });
+});
