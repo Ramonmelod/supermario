@@ -92,7 +92,7 @@
 }
 .highland {
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
   width: 30%;
   height: 30%;
   animation: highland-animation 12s infinite linear;
