@@ -26,6 +26,7 @@ export const pontosControleAlter = () => {
   pontosControle = false;
 };
 controller(
+  // chamada da função controller exportada do arquivo controller.js
   mario,
   pipe,
   gameOver,
@@ -80,9 +81,7 @@ const add = async (rec, pts, urlP) => {
 };
 getRecordistsList().then((data) => {
   //envio do novo recordista
-  console.log(pontos);
-  //console.log(data[data.length - 1].i_pontuacao_listarecordistas);
-  //console.log(btnEnterControle);
+
   const caixa = document.querySelector(".caixa"); // caixa de dialogo com captura do texto com a tecla enter
 
   caixa
