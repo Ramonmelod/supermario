@@ -1,234 +1,218 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.fundoGeral{
-    background-color: rgba(200, 186, 161, 0.782);
-    height: 914px;
-
-
+.fundoGeral {
+  background-color: rgba(200, 186, 161, 0.782);
+  height: 914px;
 }
-.game-board{
-    width: 50%;
-    height: 500px;
-    border: 1px solid #0000ff;
-    margin: 0 auto;
-    position: relative;
-    overflow:hidden;
-    background-color: #aed4f8;
+.game-board {
+  width: 50%;
+  height: 500px;
+  border: 1px solid #0000ff;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background-color: #aed4f8;
 }
-.pipe{
+.pipe {
+  position: absolute;
+  bottom: 30px;
+  width: 80px;
+  animation: pipe-animation 2s infinite linear;
+}
 
-    position: absolute;
+@keyframes pipe-animation {
+  from {
+    right: -80px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
+  }
+  to {
+    right: 100%;
+  }
+}
+.mario {
+  display: "block";
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  height: 80px;
+}
+
+.jump {
+  animation: jump 1s;
+}
+
+@keyframes jump {
+  0% {
     bottom: 30px;
-    width: 80px;
-    animation: pipe-animation 2s infinite linear;
-
-}
-
-@keyframes pipe-animation{
-
-   from{
-    right:-80px;             /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
-   }
-   to {
-    right:  100%;
-   }
-
-}
-.mario{
-    display: 'block';
-    position: absolute;
-    left: 0;
-    bottom: 30px;
-    height: 80px;
-
-}
-
-.jump{
-
-    animation: jump 1s;
-}
-
-@keyframes jump{
-
-   0%{
-    bottom: 30px;
-   }
-   40%{
-    bottom: 200px;;
-   }
-   50%{
+  }
+  40% {
     bottom: 200px;
-   }
-   60%{
+  }
+  50% {
     bottom: 200px;
-   }
-    100%{
-        bottom:30px;
-    }
+  }
+  60% {
+    bottom: 200px;
+  }
+  100% {
+    bottom: 30px;
+  }
 }
 
-.gameOver{
-    display: none;      /* muda de block para none*/
-    position: absolute;
-    bottom: 120px;
-    left: 10px;
-    height: 65px;
+.gameOver {
+  display: none; /* muda de block para none*/
+  position: absolute;
+  bottom: 120px;
+  left: 10px;
+  height: 65px;
 }
 
-.nuvens{
-
-    position: absolute;
-    top:20px;
-    height: 180px;
-    animation: nuvens-animation 30s infinite;
-
+.nuvens {
+  position: absolute;
+  top: 20px;
+  height: 180px;
+  animation: nuvens-animation 30s infinite;
 }
 
-@keyframes nuvens-animation{
-
-    from{
-     left: -370px;;             /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
-    }
-    to {
-     left:  100%;
-    }
+@keyframes nuvens-animation {
+  from {
+    left: -370px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
+  }
+  to {
+    left: 100%;
+  }
 }
-.solo{
-    position: absolute;
-    height: 30px;
-    width: 100%;
-    bottom: 0;
-
-
+.solo {
+  position: absolute;
+  height: 30px;
+  width: 100%;
+  bottom: 0;
 }
-.pontuacao{
-    position: absolute;
-    right: 10%;
-    top: 3%;
-    color: rgb(246, 248, 242);
-    font-size: xx-large;
-    font-weight: 300;
-    font-family: fantasy;
-
-}
-.recordes{
-    border: 3px solid #aed4f8;
-    background-color: rgb(137, 179, 179);
-    position: absolute;
-    height: 300px;
-    width: 280px;
-    left: 50px;
-    top: 100px;
-}
-.tituloRecordes{
-    color: rgb(7, 12, 17);
-    font-style: oblique;
-    position: absolute;
-    left: 15px;
-    top: 10px;
-
-}
-.caixa{
-    position: absolute;
-    left: 15px;
-    top: 370px;
-    width: 200px;
-    height: 25px;
-
-}
-.dialogo{
-    display: none;
-    font-size: large;
-    font-weight: 600;
-    position: absolute;
-    left: 45px;
-    top: 420px;
-
-}
-.instrucoes{
-    font-size:large;
-    font-weight: 600;
-    position: absolute;
-    right: 37%;
-    top: 520px;
-    color: black;
-
-}
-.recordistas{
-    color: rgb(7, 12, 17);
-    font-style:normal;
-    font-size: medium;
-    
-
+.highland {
+  position: absolute;
+  bottom: 30px;
+  width: 30%;
+  height: 30%;
+  animation: highland-animation 12s infinite linear;
 }
 
-#r01{
-    position: absolute;
-    left: 15px;
-    top: 60px;
-
+@keyframes highland-animation {
+  from {
+    right: -80px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
+  }
+  to {
+    right: 100%;
+  }
+}
+.pontuacao {
+  position: absolute;
+  right: 10%;
+  top: 3%;
+  color: rgb(246, 248, 242);
+  font-size: xx-large;
+  font-weight: 300;
+  font-family: fantasy;
+}
+.recordes {
+  border: 3px solid #aed4f8;
+  background-color: rgb(137, 179, 179);
+  position: absolute;
+  height: 300px;
+  width: 280px;
+  left: 50px;
+  top: 100px;
+}
+.tituloRecordes {
+  color: rgb(7, 12, 17);
+  font-style: oblique;
+  position: absolute;
+  left: 15px;
+  top: 10px;
+}
+.caixa {
+  position: absolute;
+  left: 15px;
+  top: 370px;
+  width: 200px;
+  height: 25px;
+}
+.dialogo {
+  display: none;
+  font-size: large;
+  font-weight: 600;
+  position: absolute;
+  left: 45px;
+  top: 420px;
+}
+.instrucoes {
+  font-size: large;
+  font-weight: 600;
+  position: absolute;
+  right: 37%;
+  top: 520px;
+  color: black;
+}
+.recordistas {
+  color: rgb(7, 12, 17);
+  font-style: normal;
+  font-size: medium;
 }
 
-#r02{
-    position: relative;
-    left: 15px;
-    top: 80px;
-
+#r01 {
+  position: absolute;
+  left: 15px;
+  top: 60px;
 }
-#r03{
-    position: relative;
-    left: 15px;
-    top: 80px;
 
+#r02 {
+  position: relative;
+  left: 15px;
+  top: 80px;
 }
-#r04{
-    position: relative;
-    left: 15px;
-    top: 80px;
-
+#r03 {
+  position: relative;
+  left: 15px;
+  top: 80px;
 }
-#r05{
-    position: relative;
-    left: 15px;
-    top: 80px;
-
+#r04 {
+  position: relative;
+  left: 15px;
+  top: 80px;
 }
-#r06{
-    position: relative;
-    left: 15px;
-    top: 80px;
-
+#r05 {
+  position: relative;
+  left: 15px;
+  top: 80px;
 }
-#r07{
-    position: relative;
-    left: 15px;
-    top: 80px;
-
+#r06 {
+  position: relative;
+  left: 15px;
+  top: 80px;
 }
-#r08{
-    position: relative;
-    left: 15px;
-    top: 80px;
-
+#r07 {
+  position: relative;
+  left: 15px;
+  top: 80px;
 }
-#r02{
-    position: relative;
-    left: 15px;
-    top: 80px;
-
+#r08 {
+  position: relative;
+  left: 15px;
+  top: 80px;
 }
-#r09{
-    position: relative;
-    left: 15px;
-    top: 80px;
-
+#r02 {
+  position: relative;
+  left: 15px;
+  top: 80px;
 }
-#r10{
-    position: relative;
-    left: 15px;
-    top: 80px;
-
+#r09 {
+  position: relative;
+  left: 15px;
+  top: 80px;
+}
+#r10 {
+  position: relative;
+  left: 15px;
+  top: 80px;
 }
