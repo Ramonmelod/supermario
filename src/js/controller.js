@@ -29,7 +29,6 @@ export const controller = (
     pipecontroller.style.animation = `pipe-animation ${animationTimecontroller}s infinite linear`;
 
     if (pipePosition < 65 && marioPosition < 353 && pontosControlecontroller) {
-      console.log(pontosControlecontroller);
       mostrarPontoscontroller.innerHTML = pontosIncremento(); // altera o mostrador dos pontos esta função é exportada do script.js
     } else if ((pipePosition < 65) & (marioPosition > 353)) {
       // condição de game over
@@ -40,9 +39,9 @@ export const controller = (
       mariocontroller.style.display = "none"; // esconde o gif do mariocontroller andando
       pipecontroller.style.left = pipePosition + "px"; //concatenação de pipeposition com px
       pontosControleAlter(); // função exportada do script.js
-      console.log("gameOver " + pontosControlecontroller);
+
       pontosControlecontroller = false; //altera a variável pontosControlecontroller para que a condição que altera o mostrador dos pontos não seja incrementada
-      console.log("gameOver " + pontosControlecontroller);
+
       dialogocontroller.style.display = "block";
     }
   }, 100);

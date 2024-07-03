@@ -64,7 +64,6 @@ getRecordistsList().then((data) => {
   //monitora a pontuação para alterar o texto do dialogo
 
   setInterval(() => {
-    console.log(pontos);
     if (
       pontos > data[data.length - 1].i_pontuacao_listarecordistas &&
       btnEnterControle
