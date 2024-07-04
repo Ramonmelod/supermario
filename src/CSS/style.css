@@ -20,16 +20,7 @@
   position: absolute;
   bottom: 30px;
   width: 80px;
-  animation: pipe-animation 15s infinite linear;
-}
-
-@keyframes pipe-animation {
-  from {
-    right: -80px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
-  }
-  to {
-    right: 100%;
-  }
+  animation: coming-animation 15s infinite linear;
 }
 
 .goomba {
@@ -37,7 +28,16 @@
   bottom: 0px;
   width: 15%;
   height: 20%;
-  animation: goomba-animation 6s infinite;
+  animation: goomba-animation 6s infinite linear;
+}
+
+@keyframes coming-animation {
+  from {
+    right: -220px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
+  }
+  to {
+    right: 100%;
+  }
 }
 
 @keyframes goomba-animation {
@@ -49,30 +49,6 @@
   }
 }
 
-.highland {
-  position: absolute;
-  bottom: 20px;
-  width: 30%;
-  height: 30%;
-  animation: highland-animation 12s infinite linear;
-}
-
-@keyframes highland-animation {
-  from {
-    right: -200px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
-  }
-  to {
-    right: 100%;
-  }
-}
-
-.nuvens {
-  position: absolute;
-  top: 20px;
-  height: 180px;
-  animation: nuvens-animation 30s infinite;
-}
-
 @keyframes nuvens-animation {
   from {
     left: -370px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
@@ -80,13 +56,6 @@
   to {
     left: 100%;
   }
-}
-.mario {
-  display: "block";
-  position: absolute;
-  left: 0;
-  bottom: 30px;
-  height: 80px;
 }
 
 .jump {
@@ -109,6 +78,30 @@
   100% {
     bottom: 30px;
   }
+}
+
+.highland {
+  display: none;
+  position: absolute;
+  bottom: 20px;
+  width: 30%;
+  height: 30%;
+  animation: coming-animation 15s infinite linear;
+}
+
+.nuvens {
+  position: absolute;
+  top: 20px;
+  height: 180px;
+  animation: nuvens-animation 30s infinite;
+}
+
+.mario {
+  display: "block";
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  height: 80px;
 }
 
 .gameOver {

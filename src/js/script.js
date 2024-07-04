@@ -15,7 +15,7 @@ const gameOver = document.querySelector(".gameOver");
 const dialogo = document.querySelector(".dialogo");
 const mostrarPontos = document.getElementsByClassName("pontuacao")[0]; // recebe o primeiro elemento da classe pontos
 let pontos = 0;
-let animationTime = 2; // tempo que o cano leva pa
+let animationTime = 4; // tempo que o cano leva pa
 let pontosControle = true; // apenas para controle do registro de pontuação
 let btnEnterControle = true; // controla se o botão enter para envio do nome do jogador já foi apertado
 export const pontosIncremento = () => {
