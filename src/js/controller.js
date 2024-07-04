@@ -24,13 +24,15 @@ export const controller = (
 
   const loop1 = setInterval(() => {
     const highland = document.querySelector(".highland");
-
     const highlandPosition = highland.offsetLeft;
+    const goomba = document.querySelector(".goomba");
     const pipePosition = pipecontroller.offsetLeft; // monitora o posicionamento class pipecontroller
     const marioPosition = mariocontroller.offsetTop; //monitora o posicionamento class mariocontroller
-    animationTimecontroller = animationTimecontroller; /*- 0.0005;*/ //decremento da variavel animationTimecontroller. Isto acelera o cano
+    //const goombaPosition = goomba.offsetTop; //monitora o posicionamento class mariocontroller
+    //goomba.style.bottom = "300 px";
+    animationTimecontroller = animationTimecontroller - 0.0005; //decremento da variavel animationTimecontroller. Isto acelera o cano
     pipecontroller.style.animation = `pipe-animation ${animationTimecontroller}s infinite linear`;
-    //highland.style.animation = pipecontroller.style.animation;
+
     if (pipePosition < 65 && marioPosition < 353 && pontosControlecontroller) {
       mostrarPontoscontroller.innerHTML = pontosIncremento(); // altera o mostrador dos pontos esta função é exportada do script.js
     } else if ((pipePosition < 65) & (marioPosition > 353)) {
@@ -42,7 +44,8 @@ export const controller = (
       mariocontroller.style.display = "none"; // esconde o gif do mariocontroller andando
       pipecontroller.style.left = pipePosition + "px"; //concatenação de pipeposition com px
       pontosControleAlter(); // função exportada do script.js
-
+      highland.style.animation = "none";
+      highland.style.left = highlandPosition + "px";
       pontosControlecontroller = false; //altera a variável pontosControlecontroller para que a condição que altera o mostrador dos pontos não seja incrementada
 
       dialogocontroller.style.display = "block";

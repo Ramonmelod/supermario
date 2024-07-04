@@ -20,7 +20,7 @@
   position: absolute;
   bottom: 30px;
   width: 80px;
-  animation: pipe-animation 2s infinite linear;
+  animation: pipe-animation 15s infinite linear;
 }
 
 @keyframes pipe-animation {
@@ -29,6 +29,56 @@
   }
   to {
     right: 100%;
+  }
+}
+
+.goomba {
+  position: absolute;
+  bottom: 0px;
+  width: 15%;
+  height: 20%;
+  animation: goomba-animation 6s infinite;
+}
+
+@keyframes goomba-animation {
+  from {
+    right: -80px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
+  }
+  to {
+    right: 100%;
+  }
+}
+
+.highland {
+  position: absolute;
+  bottom: 20px;
+  width: 30%;
+  height: 30%;
+  animation: highland-animation 12s infinite linear;
+}
+
+@keyframes highland-animation {
+  from {
+    right: -200px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
+  }
+  to {
+    right: 100%;
+  }
+}
+
+.nuvens {
+  position: absolute;
+  top: 20px;
+  height: 180px;
+  animation: nuvens-animation 30s infinite;
+}
+
+@keyframes nuvens-animation {
+  from {
+    left: -370px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
+  }
+  to {
+    left: 100%;
   }
 }
 .mario {
@@ -69,59 +119,11 @@
   height: 65px;
 }
 
-.nuvens {
-  position: absolute;
-  top: 20px;
-  height: 180px;
-  animation: nuvens-animation 30s infinite;
-}
-
-@keyframes nuvens-animation {
-  from {
-    left: -370px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
-  }
-  to {
-    left: 100%;
-  }
-}
 .solo {
   position: absolute;
   height: 30px;
   width: 100%;
   bottom: 0;
-}
-.goomba {
-  position: absolute;
-  bottom: 0px;
-  width: 15%;
-  height: 20%;
-  animation: goomba-animation 6s infinite linear;
-}
-
-@keyframes goomba-animation {
-  from {
-    right: -200px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
-  }
-  to {
-    right: 100%;
-  }
-}
-
-.highland {
-  position: absolute;
-  bottom: 20px;
-  width: 30%;
-  height: 30%;
-  animation: highland-animation 12s infinite linear;
-}
-
-@keyframes highland-animation {
-  from {
-    right: -200px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
-  }
-  to {
-    right: 100%;
-  }
 }
 .pontuacao {
   position: absolute;
