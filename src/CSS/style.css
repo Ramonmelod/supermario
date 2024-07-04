@@ -90,6 +90,23 @@
   width: 100%;
   bottom: 0;
 }
+.goomba {
+  position: absolute;
+  bottom: 0px;
+  width: 15%;
+  height: 20%;
+  animation: goomba-animation 6s infinite linear;
+}
+
+@keyframes goomba-animation {
+  from {
+    right: -200px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
+  }
+  to {
+    right: 100%;
+  }
+}
+
 .highland {
   position: absolute;
   bottom: 20px;
@@ -100,7 +117,7 @@
 
 @keyframes highland-animation {
   from {
-    right: -80px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
+    right: -200px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
   }
   to {
     right: 100%;

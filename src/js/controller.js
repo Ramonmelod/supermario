@@ -23,11 +23,14 @@ export const controller = (
   });
 
   const loop1 = setInterval(() => {
+    const highland = document.querySelector(".highland");
+
+    const highlandPosition = highland.offsetLeft;
     const pipePosition = pipecontroller.offsetLeft; // monitora o posicionamento class pipecontroller
     const marioPosition = mariocontroller.offsetTop; //monitora o posicionamento class mariocontroller
-    animationTimecontroller = animationTimecontroller - 0.0005; //decremento da variavel animationTimecontroller. Isto acelera o cano
+    animationTimecontroller = animationTimecontroller; /*- 0.0005;*/ //decremento da variavel animationTimecontroller. Isto acelera o cano
     pipecontroller.style.animation = `pipe-animation ${animationTimecontroller}s infinite linear`;
-
+    //highland.style.animation = pipecontroller.style.animation;
     if (pipePosition < 65 && marioPosition < 353 && pontosControlecontroller) {
       mostrarPontoscontroller.innerHTML = pontosIncremento(); // altera o mostrador dos pontos esta função é exportada do script.js
     } else if ((pipePosition < 65) & (marioPosition > 353)) {
