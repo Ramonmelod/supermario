@@ -51,7 +51,6 @@ export const controller = (
       pontosControleAlter(); // função exportada do script.js
       highland.style.animation = "none"; // para a movimentação do elemento highland
       highland.style.left = highlandPosition + "px";
-      s;
       pontosControlecontroller = false; //altera a variável pontosControlecontroller para que a condição que altera o mostrador dos pontos não seja incrementada
 
       dialogocontroller.style.display = "block";
