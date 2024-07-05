@@ -44,7 +44,7 @@ export const controller = (
       // condição de game over
 
       pipecontroller.style.animation = "none"; // desliga o movimento do cano
-      gameOvercontroller.style.bottom = marioPosition - 330 + "px"; // concatenação - 350
+      gameOvercontroller.style.top = marioPosition + "px"; // concatenação - 350
       gameOvercontroller.style.display = "block"; // mostra o desenho de game-over do mariocontroller
       mariocontroller.style.display = "none"; // esconde o gif do mariocontroller andando
       pipecontroller.style.left = pipePosition + "px"; //concatenação de pipeposition com px
