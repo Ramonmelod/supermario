@@ -38,11 +38,10 @@ export const controller = (
     if (pipePosition < 65 && marioPosition < 353 && pontosControlecontroller) {
       mostrarPontoscontroller.innerHTML = pontosIncremento(); // altera o mostrador dos pontos esta função é exportada do script.js
     } else if (
-      (pipePosition < 65) & (marioPosition > 353) || // pipe death condition
-      (goombaPosition < 10 && goombaPosition > 0 && marioPosition > 353) // goomba death condition
+      (pipePosition < 65 && pipePosition > -10) & (marioPosition > 353) || // pipe death condition
+      (goombaPosition > 0 && goombaPosition < 14 && marioPosition > 353) // goomba death condition
     ) {
       // condição de game over
-
       pipecontroller.style.animation = "none"; // desliga o movimento do cano
       gameOvercontroller.style.top = marioPosition + "px"; // concatenação - 350
       gameOvercontroller.style.display = "block"; // mostra o desenho de game-over do mariocontroller
@@ -55,6 +54,6 @@ export const controller = (
 
       dialogocontroller.style.display = "block";
     }
-  }, 10);
+  }, 100);
   return pontoscontroller;
 };

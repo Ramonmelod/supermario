@@ -28,7 +28,7 @@
   bottom: 0px;
   width: 15%;
   height: 20%;
-  animation: goomba-animation 6s infinite linear;
+  animation: goomba-animation 3s infinite linear;
 }
 
 @keyframes coming-animation {
