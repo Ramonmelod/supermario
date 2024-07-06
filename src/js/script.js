@@ -18,6 +18,11 @@ let pontos = 0;
 let animationTime = 5; // tempo que o cano leva pa
 let pontosControle = true; // apenas para controle do registro de pontuação
 let btnEnterControle = true; // controla se o botão enter para envio do nome do jogador já foi apertado
+
+const highland = document.querySelector(".highland");
+
+const goomba = document.querySelector(".goomba");
+
 export const pontosIncremento = () => {
   pontos++;
   return pontos; // retorna o valor da variavel pontos para o controller.js
@@ -34,7 +39,9 @@ controller(
   pontos,
   animationTime,
   pontosControle,
-  mostrarPontos
+  mostrarPontos,
+  highland,
+  goomba
 );
 
 let dataRecordistas = [];
