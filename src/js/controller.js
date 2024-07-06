@@ -13,11 +13,11 @@ export const controller = (
 ) => {
   const moveLeft = () => {
     const marioPosition = mariocontroller.offsetLeft;
-    mariocontroller.style.left = marioPosition - 10 + "px";
+    mariocontroller.style.left = marioPosition - 7 + "px";
   };
   const moveright = () => {
     const marioPosition = mariocontroller.offsetLeft;
-    mariocontroller.style.left = marioPosition + 10 + "px";
+    mariocontroller.style.left = marioPosition + 7 + "px";
   };
 
   const jump = () => {
@@ -61,20 +61,27 @@ export const controller = (
     if (pipePosition < 0) {
       highlandcontroller.style.display = "block"; //troca o estado da propriedade display da highland assim que o pipe some
     }
-    if (pipePosition < 65 && marioPosition < 353 && pontosControlecontroller) {
+    if (
+      (pipePosition - marioLeftPosition < 60 &&
+        pipePosition - marioLeftPosition > 0 &&
+        marioPosition < 353) || // pipe death condition
+      (goombaPosition - marioLeftPosition < 30 &&
+        goombaPosition - marioLeftPosition > -35 && // foi colocado um valor menor que zero para evitar que o Mario passe muito rapido pelo Goomba e não morra
+        marioPosition < 353)
+    ) {
       mostrarPontoscontroller.innerHTML = pontosIncremento(); // altera o mostrador dos pontos esta função é exportada do script.js
     } else if (
       (pipePosition - marioLeftPosition < 60 &&
         pipePosition - marioLeftPosition > 0 &&
         marioPosition > 353) || // pipe death condition
       (goombaPosition - marioLeftPosition < 30 &&
-        goombaPosition - marioLeftPosition > 0 &&
+        goombaPosition - marioLeftPosition > -15 && // foi colocado um valor menor que zero para evitar que o Mario passe muito rapido pelo Goomba e não morra
         marioPosition > 353) // goomba death condition
     ) {
-      /*const subtracaoPipe = pipePosition - marioLeftPosition;
+      //const subtracaoPipe = pipePosition - marioLeftPosition;
       const subtracaoGomba = goombaPosition - marioLeftPosition;
-      console.log("subtraçãoPipe: " + subtracaoPipe);
-      console.log("subtraçãoGoomba: " + subtracaoGomba);*/
+      //console.log("subtraçãoPipe: " + subtracaoPipe);
+      console.log("subtraçãoGoomba: " + subtracaoGomba);
       // condição de game over
       pipecontroller.style.animation = "none"; // desliga o movimento do cano
       gameOvercontroller.style.top = marioPosition + "px"; // define a altura do mario Game Over para a altura do personagem mario
