@@ -170,12 +170,20 @@
   left: 45px;
   top: 420px;
 }
-.instrucoes {
+.instrucoesPulo {
   font-size: large;
   font-weight: 600;
   position: absolute;
   right: 37%;
   top: 520px;
+  color: black;
+}
+.instrucoesMovimento {
+  font-size: large;
+  font-weight: 600;
+  position: absolute;
+  right: 25%;
+  top: 550px;
   color: black;
 }
 .recordistas {
