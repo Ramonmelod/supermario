@@ -11,6 +11,19 @@ export const controller = (
   highlandcontroller,
   goombacontroller
 ) => {
+  const moveLeft = () => {
+    const marioPosition = mariocontroller.offsetLeft;
+    console.log(marioPosition);
+    mariocontroller.style.left = marioPosition - 10 + "px";
+    console.log(marioPosition);
+  };
+  const moveright = () => {
+    const marioPosition = mariocontroller.offsetLeft;
+    console.log(marioPosition);
+    mariocontroller.style.left = marioPosition + 10 + "px";
+    console.log(marioPosition);
+  };
+
   const jump = () => {
     mariocontroller.classList.add("jump");
     setTimeout(() => {
@@ -28,6 +41,7 @@ export const controller = (
     // ativa a função que espelha o personagem Mario
     if (event.key === "ArrowLeft") {
       mariocontroller.classList.add("mirror");
+      moveLeft();
     }
   });
 
@@ -35,6 +49,7 @@ export const controller = (
     // desativa a função que espelha o personagem Mario
     if (event.key === "ArrowRight") {
       mariocontroller.classList.remove("mirror");
+      moveright();
     }
   });
 
