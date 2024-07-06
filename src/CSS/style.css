@@ -31,6 +31,9 @@
   animation: goomba-animation 3s infinite linear;
 }
 
+.mirror {
+  transform: scaleX(-1);
+}
 @keyframes coming-animation {
   from {
     right: -220px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/

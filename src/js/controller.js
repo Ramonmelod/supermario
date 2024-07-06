@@ -22,6 +22,18 @@ export const controller = (
     }
   });
 
+  const enableMirror = document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      mariocontroller.classList.add("mirror");
+    }
+  });
+
+  const disableMirror = document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") {
+      mariocontroller.classList.remove("mirror");
+    }
+  });
+
   const loop1 = setInterval(() => {
     const highland = document.querySelector(".highland");
     const highlandPosition = highland.offsetLeft;
