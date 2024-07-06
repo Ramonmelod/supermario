@@ -13,15 +13,11 @@ export const controller = (
 ) => {
   const moveLeft = () => {
     const marioPosition = mariocontroller.offsetLeft;
-    console.log(marioPosition);
     mariocontroller.style.left = marioPosition - 10 + "px";
-    console.log(marioPosition);
   };
   const moveright = () => {
     const marioPosition = mariocontroller.offsetLeft;
-    console.log(marioPosition);
     mariocontroller.style.left = marioPosition + 10 + "px";
-    console.log(marioPosition);
   };
 
   const jump = () => {
@@ -75,13 +71,14 @@ export const controller = (
         goombaPosition - marioLeftPosition > 0 &&
         marioPosition > 353) // goomba death condition
     ) {
-      const subtracaoPipe = pipePosition - marioLeftPosition;
+      /*const subtracaoPipe = pipePosition - marioLeftPosition;
       const subtracaoGomba = goombaPosition - marioLeftPosition;
       console.log("subtraçãoPipe: " + subtracaoPipe);
-      console.log("subtraçãoGoomba: " + subtracaoGomba);
+      console.log("subtraçãoGoomba: " + subtracaoGomba);*/
       // condição de game over
       pipecontroller.style.animation = "none"; // desliga o movimento do cano
-      gameOvercontroller.style.top = marioPosition + "px"; // concatenação - 350
+      gameOvercontroller.style.top = marioPosition + "px"; // define a altura do mario Game Over para a altura do personagem mario
+      gameOvercontroller.style.left = marioLeftPosition + "px"; // define a esquerda do mario Game Over para a altura do personagem mario
       gameOvercontroller.style.display = "block"; // mostra o desenho de game-over do mariocontroller
       mariocontroller.style.display = "none"; // esconde o gif do mariocontroller andando
       pipecontroller.style.left = pipePosition + "px"; //concatenação de pipeposition com px
