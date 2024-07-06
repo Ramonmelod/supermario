@@ -78,10 +78,6 @@ export const controller = (
         goombaPosition - marioLeftPosition > -15 && // foi colocado um valor menor que zero para evitar que o Mario passe muito rapido pelo Goomba e não morra
         marioPosition > 353) // goomba death condition
     ) {
-      //const subtracaoPipe = pipePosition - marioLeftPosition;
-      const subtracaoGomba = goombaPosition - marioLeftPosition;
-      //console.log("subtraçãoPipe: " + subtracaoPipe);
-      console.log("subtraçãoGoomba: " + subtracaoGomba);
       // condição de game over
       pipecontroller.style.animation = "none"; // desliga o movimento do cano
       gameOvercontroller.style.top = marioPosition + "px"; // define a altura do mario Game Over para a altura do personagem mario
