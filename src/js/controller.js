@@ -58,6 +58,7 @@ export const controller = (
     const pipePosition = pipecontroller.offsetLeft; // monitora o posicionamento class pipecontroller
     const marioPosition = mariocontroller.offsetTop; //monitora o posicionamento class mariocontroller
     const goombaPosition = goombacontroller.offsetLeft; //monitora o posicionamento class mariocontroller
+    const marioLeftPosition = mariocontroller.offsetLeft; //monitora o posicionamento class mariocontroller
 
     animationTimecontroller = animationTimecontroller - 0.0005; //decremento da variavel animationTimecontroller. Isto acelera o cano
     pipecontroller.style.animation = `coming-animation ${animationTimecontroller}s infinite linear`;
@@ -67,9 +68,17 @@ export const controller = (
     if (pipePosition < 65 && marioPosition < 353 && pontosControlecontroller) {
       mostrarPontoscontroller.innerHTML = pontosIncremento(); // altera o mostrador dos pontos esta função é exportada do script.js
     } else if (
-      (pipePosition < 65 && pipePosition > -10) & (marioPosition > 353) || // pipe death condition
-      (goombaPosition > 0 && goombaPosition < 14 && marioPosition > 353) // goomba death condition
+      (pipePosition - marioLeftPosition < 60 &&
+        pipePosition - marioLeftPosition > 0 &&
+        marioPosition > 353) || // pipe death condition
+      (goombaPosition - marioLeftPosition < 30 &&
+        goombaPosition - marioLeftPosition > 0 &&
+        marioPosition > 353) // goomba death condition
     ) {
+      const subtracaoPipe = pipePosition - marioLeftPosition;
+      const subtracaoGomba = goombaPosition - marioLeftPosition;
+      console.log("subtraçãoPipe: " + subtracaoPipe);
+      console.log("subtraçãoGoomba: " + subtracaoGomba);
       // condição de game over
       pipecontroller.style.animation = "none"; // desliga o movimento do cano
       gameOvercontroller.style.top = marioPosition + "px"; // concatenação - 350

@@ -20,7 +20,6 @@ let pontosControle = true; // apenas para controle do registro de pontuação
 let btnEnterControle = true; // controla se o botão enter para envio do nome do jogador já foi apertado
 
 const highland = document.querySelector(".highland");
-
 const goomba = document.querySelector(".goomba");
 
 export const pontosIncremento = () => {
