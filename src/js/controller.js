@@ -85,6 +85,6 @@ export const controller = (
 
       dialogocontroller.style.display = "block";
     }
-  }, 100);
+  }, 5);
   return pontoscontroller;
 };
