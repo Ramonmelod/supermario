@@ -15,7 +15,6 @@ export const collision = (pipecollision, mariocollision, goombacollision) => {
     console.log("colisão");
     return true;
   } else {
-    console.log("sem colisão");
     return false;
   }
 };

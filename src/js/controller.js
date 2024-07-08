@@ -1,5 +1,5 @@
-import { /* pontosIncremento, */ pontosControleAlter } from "./script.js";
-//import { collision } from "./collision.js";
+import { pontosControleAlter } from "./script.js";
+import { collision } from "./collision.js";
 
 export const controller = (
   mariocontroller,
@@ -52,10 +52,15 @@ export const controller = (
   });
 
   const loop1 = setInterval(() => {
+    const collisionReceiver = collision(
+      pipecontroller,
+      mariocontroller,
+      goombacontroller
+    );
     const highlandPosition = highlandcontroller.offsetLeft; // monitora o posicionamento da highland
     const pipePosition = pipecontroller.offsetLeft; // monitora o posicionamento class pipecontroller
     const marioPosition = mariocontroller.offsetTop; //monitora o posicionamento class mariocontroller
-    const goombaPosition = goombacontroller.offsetLeft; //monitora o posicionamento class mariocontroller
+    // const goombaPosition = goombacontroller.offsetLeft; //monitora o posicionamento class mariocontroller
     const marioLeftPosition = mariocontroller.offsetLeft; //monitora o posicionamento class mariocontroller
 
     animationTimecontroller = animationTimecontroller - 0.0005; //decremento da variavel animationTimecontroller. Isto acelera o cano
@@ -64,14 +69,8 @@ export const controller = (
       highlandcontroller.style.display = "block"; //troca o estado da propriedade display da highland assim que o pipe some
     }
 
-    if (
-      (pipePosition - marioLeftPosition < 60 &&
-        pipePosition - marioLeftPosition > 0 &&
-        marioPosition > 353) || // pipe death condition
-      (goombaPosition - marioLeftPosition < 30 &&
-        goombaPosition - marioLeftPosition > -15 && // foi colocado um valor menor que zero para evitar que o Mario passe muito rapido pelo Goomba e não morra
-        marioPosition > 353) // goomba death condition
-    ) {
+    if (collisionReceiver) {
+      // esta variavel recebe o valor diretamente do arquivo colision.js
       // condição de game over
       pipecontroller.style.animation = "none"; // desliga o movimento do cano
       gameOvercontroller.style.top = marioPosition + "px"; // define a altura do mario Game Over para a altura do personagem mario
