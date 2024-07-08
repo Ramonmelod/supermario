@@ -1,4 +1,6 @@
-import { pontosIncremento, pontosControleAlter } from "./script.js";
+import { /* pontosIncremento, */ pontosControleAlter } from "./script.js";
+//import { collision } from "./collision.js";
+
 export const controller = (
   mariocontroller,
   pipecontroller,
@@ -61,16 +63,8 @@ export const controller = (
     if (pipePosition < 0) {
       highlandcontroller.style.display = "block"; //troca o estado da propriedade display da highland assim que o pipe some
     }
+
     if (
-      (pipePosition - marioLeftPosition < 60 &&
-        pipePosition - marioLeftPosition > 0 &&
-        marioPosition < 353) || // pipe death condition
-      (goombaPosition - marioLeftPosition < 30 &&
-        goombaPosition - marioLeftPosition > -35 && // foi colocado um valor menor que zero para evitar que o Mario passe muito rapido pelo Goomba e não morra
-        marioPosition < 353)
-    ) {
-      mostrarPontoscontroller.innerHTML = pontosIncremento(); // altera o mostrador dos pontos esta função é exportada do script.js
-    } else if (
       (pipePosition - marioLeftPosition < 60 &&
         pipePosition - marioLeftPosition > 0 &&
         marioPosition > 353) || // pipe death condition

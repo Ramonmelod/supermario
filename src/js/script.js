@@ -1,6 +1,7 @@
 import { query } from "./query.js";
 import { save } from "./post.js";
 import { controller } from "./controller.js";
+import { collision } from "./collision.js";
 
 const urlGet =
   "https://ramonmelod-servidor-node-recordistas-mario.vercel.app" ||
@@ -22,13 +23,19 @@ let btnEnterControle = true; // controla se o botão enter para envio do nome do
 const highland = document.querySelector(".highland");
 const goomba = document.querySelector(".goomba");
 
-export const pontosIncremento = () => {
-  pontos++;
-  return pontos; // retorna o valor da variavel pontos para o controller.js
-};
 export const pontosControleAlter = () => {
+  // esta função esta sendo chamada em controller.js como forma de alterar pontosControle para false
   pontosControle = false;
 };
+
+const pontosIncremento = setInterval(() => {
+  // incrementa a pontuação do jogo e lança esta pontuação no mostraPontos
+  mostrarPontos.innerHTML = pontos;
+  pontos++;
+  if (!pontosControle) clearInterval(pontosIncremento); // esta condição quando satisfeita para o incremento da variavel pontos
+}, 1000);
+
+const cls = collision(pipe, mario, goomba);
 controller(
   // chamada da função controller exportada do arquivo controller.js
   mario,
