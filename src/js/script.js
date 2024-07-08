@@ -1,6 +1,7 @@
 import { query } from "./query.js";
 import { save } from "./post.js";
 import { controller } from "./controller.js";
+import { collision } from "./collision.js";
 
 const urlGet =
   "https://ramonmelod-servidor-node-recordistas-mario.vercel.app" ||
@@ -15,17 +16,28 @@ const gameOver = document.querySelector(".gameOver");
 const dialogo = document.querySelector(".dialogo");
 const mostrarPontos = document.getElementsByClassName("pontuacao")[0]; // recebe o primeiro elemento da classe pontos
 let pontos = 0;
-let animationTime = 2; // tempo que o cano leva pa
+let animationTime = 5; // tempo que o cano leva pa
 let pontosControle = true; // apenas para controle do registro de pontuação
 let btnEnterControle = true; // controla se o botão enter para envio do nome do jogador já foi apertado
-export const pontosIncremento = () => {
-  pontos++;
-  return pontos; // retorna o valor da variavel pontos para o controller.js
-};
+
+const highland = document.querySelector(".highland");
+const goomba = document.querySelector(".goomba");
+
 export const pontosControleAlter = () => {
+  // esta função esta sendo chamada em controller.js como forma de alterar pontosControle para false
   pontosControle = false;
 };
+
+const pontosIncremento = setInterval(() => {
+  // incrementa a pontuação do jogo e lança esta pontuação no mostraPontos
+  mostrarPontos.innerHTML = pontos;
+  pontos++;
+  if (!pontosControle) clearInterval(pontosIncremento); // esta condição quando satisfeita para o incremento da variavel pontos
+}, 1000);
+
+const cls = collision(pipe, mario, goomba);
 controller(
+  // chamada da função controller exportada do arquivo controller.js
   mario,
   pipe,
   gameOver,
@@ -33,7 +45,9 @@ controller(
   pontos,
   animationTime,
   pontosControle,
-  mostrarPontos
+  mostrarPontos,
+  highland,
+  goomba
 );
 
 let dataRecordistas = [];
@@ -64,7 +78,6 @@ getRecordistsList().then((data) => {
   //monitora a pontuação para alterar o texto do dialogo
 
   setInterval(() => {
-    console.log(pontos);
     if (
       pontos > data[data.length - 1].i_pontuacao_listarecordistas &&
       btnEnterControle
@@ -81,9 +94,7 @@ const add = async (rec, pts, urlP) => {
 };
 getRecordistsList().then((data) => {
   //envio do novo recordista
-  console.log(pontos);
-  //console.log(data[data.length - 1].i_pontuacao_listarecordistas);
-  //console.log(btnEnterControle);
+
   const caixa = document.querySelector(".caixa"); // caixa de dialogo com captura do texto com a tecla enter
 
   caixa
