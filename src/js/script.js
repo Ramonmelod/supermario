@@ -44,8 +44,6 @@ controller(
   dialogo,
   pontos,
   animationTime,
-  pontosControle,
-  mostrarPontos,
   highland,
   goomba
 );

@@ -8,8 +8,6 @@ export const controller = (
   dialogocontroller,
   pontoscontroller,
   animationTimecontroller,
-  pontosControlecontroller,
-  mostrarPontoscontroller,
   highlandcontroller,
   goombacontroller
 ) => {
