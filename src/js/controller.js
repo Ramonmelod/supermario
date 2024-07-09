@@ -7,6 +7,7 @@ export const controller = (
   gameOvercontroller,
   dialogocontroller,
   pontoscontroller,
+  pontosControlecontroller,
   animationTimecontroller,
   highlandcontroller,
   goombacontroller
