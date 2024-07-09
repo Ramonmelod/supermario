@@ -115,6 +115,9 @@
   bottom: 30px;
   height: 80px;
 }
+.marioUpHighland {
+  bottom: 169px;
+}
 
 .gameOver {
   display: none; /* muda de block para none*/

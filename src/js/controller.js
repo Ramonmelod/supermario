@@ -50,6 +50,16 @@ export const controller = (
     }
   });
 
+  const marioUpHighland = () => {
+    mariocontroller.classList.add("marioUpHighland");
+  };
+
+  const ativaMarioUpHighland = document.addEventListener("keydown", (event) => {
+    if (event.key === "d") {
+      marioUpHighland();
+    }
+  });
+
   const loop1 = setInterval(() => {
     const collisionReceiver = collision(
       pipecontroller,
