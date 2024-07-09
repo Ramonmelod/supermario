@@ -43,6 +43,7 @@ controller(
   gameOver,
   dialogo,
   pontos,
+  pontosControle,
   animationTime,
   highland,
   goomba

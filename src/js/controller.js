@@ -7,6 +7,7 @@ export const controller = (
   gameOvercontroller,
   dialogocontroller,
   pontoscontroller,
+  pontosControlecontroller,
   animationTimecontroller,
   highlandcontroller,
   goombacontroller
@@ -81,7 +82,7 @@ export const controller = (
       highlandcontroller.style.left = highlandPosition + "px";
       pontosControlecontroller = false; //altera a variável pontosControlecontroller para que a condição que altera o mostrador dos pontos não seja incrementada
 
-      dialogocontroller.style.display = "block";
+      dialogocontroller.style.display = "block"; //mostrar o dialogo de gameover
     }
   }, 5);
   return pontoscontroller;
