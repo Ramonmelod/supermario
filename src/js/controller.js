@@ -84,15 +84,6 @@ export const controller = (
     }
   });
 
-  const ativaMarioUpHighlandleft = document.addEventListener(
-    "keydown",
-    (event) => {
-      if (event.key === "d") {
-        jumpHighland();
-      }
-    }
-  );
-
   const loop1 = setInterval(() => {
     const collisionReceiver = collision(
       pipecontroller,
