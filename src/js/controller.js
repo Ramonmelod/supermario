@@ -36,29 +36,35 @@ export const controller = (
       mariocontroller.offsetLeft - highlandcontroller.offsetLeft > -50 &&
       mariocontroller.offsetLeft - highlandcontroller.offsetLeft < 175
     ) {
-      console.log("marioTop" + mariocontroller.offsetTop);
       mariocontroller.style.bottom = "169px";
     } else {
       mariocontroller.style.bottom = "30px"; // colocar transição de descida
     }
   }, 10);
 
-  const jumpHighland = () => {
-    mariocontroller.classList.add("marioJumpHighland");
+  const jumpUpHighland = () => {
+    mariocontroller.classList.add("marioJumpUpHighland");
     setTimeout(() => {
-      mariocontroller.classList.remove("marioJumpHighland"); //setTimeout faz com que o código espere algum tempo até ir para  a função anônima
+      mariocontroller.classList.remove("marioJumpUpHighland"); //setTimeout faz com que o código espere algum tempo até ir para  a função anônima
     }, 1000);
   };
 
   const ativaJump = document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowUp") {
+      const a = mariocontroller.offsetTop;
       if (
         highlandcontroller.offsetLeft > 0 &&
         mariocontroller.offsetLeft - highlandcontroller.offsetLeft > -100 &&
         mariocontroller.offsetLeft - highlandcontroller.offsetLeft < 200
       ) {
-        jumpHighland();
+        console.log("MariooffsetTopUp: " + mariocontroller.offsetTop);
+        jumpUpHighland();
       } else {
+        console.log("MariooffsetTop: " + mariocontroller.offsetTop);
+        /*if (mariocontroller.offsetTop > 249) {
+        console.log("ele está em cima");
+        console.log("marioTop: " + mariocontroller.offsetTop);
+      } */
         jump();
       }
     }
@@ -80,6 +86,21 @@ export const controller = (
     }
   });
 
+  const d = document.addEventListener("keydown", (event) => {
+    // desativa a função que espelha o personagem Mario
+    if (event.key === "d") {
+      if (mariocontroller.offsetTop == 249) {
+        console.log("ele está em cima");
+        console.log("marioTop: " + mariocontroller.offsetTop);
+        console.log("Dtop: " + mariocontroller.offsetTop);
+        mariocontroller.classList.add("marioJumpfromHighland");
+        setTimeout(() => {
+          mariocontroller.classList.remove("marioJumpfromHighland"); //setTimeout faz com que o código espere algum tempo até ir para  a função anônima
+        }, 1000);
+      }
+    }
+  });
+
   const loop1 = setInterval(() => {
     const collisionReceiver = collision(
       pipecontroller,
@@ -98,7 +119,7 @@ export const controller = (
       highlandcontroller.style.display = "block"; //troca o estado da propriedade display da highland assim que o pipe some
     }
 
-    if (collisionReceiver) {
+    if (/*collisionReceiver*/ false) {
       // esta variavel recebe o valor diretamente do arquivo colision.js
       // condição de game over
       pipecontroller.style.animation = "none"; // desliga o movimento do cano

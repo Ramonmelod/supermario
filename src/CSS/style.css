@@ -116,10 +116,10 @@
   height: 80px;
 }
 
-.marioJumpHighland {
-  animation: jumpHighland 1s;
+.marioJumpUpHighland {
+  animation: jumpUpHighland 1s;
 }
-@keyframes jumpHighland {
+@keyframes jumpUpHighland {
   0% {
     bottom: 30px;
   }
@@ -131,6 +131,27 @@
   }
   60% {
     bottom: 200px;
+  }
+  100% {
+    bottom: 169px;
+  }
+}
+
+.marioJumpfromHighland {
+  animation: jumpfromHighland 1s;
+}
+@keyframes jumpfromHighland {
+  0% {
+    bottom: 169px;
+  }
+  40% {
+    bottom: 369px;
+  }
+  50% {
+    bottom: 369px;
+  }
+  60% {
+    bottom: 369px;
   }
   100% {
     bottom: 169px;
