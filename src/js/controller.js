@@ -29,6 +29,7 @@ export const controller = (
   };
 
   const marioUpHighland = setInterval(() => {
+    // monitora posição do mario para definir sua altura
     if (
       highlandcontroller.offsetLeft > 0 &&
       mariocontroller.offsetLeft - highlandcontroller.offsetLeft > -50 &&
@@ -44,13 +45,6 @@ export const controller = (
     mariocontroller.classList.add("marioJumpHighland");
     setTimeout(() => {
       mariocontroller.classList.remove("marioJumpHighland"); //setTimeout faz com que o código espere algum tempo até ir para  a função anônima
-      if (
-        highlandcontroller.offsetLeft > 0 &&
-        mariocontroller.offsetLeft - highlandcontroller.offsetLeft > -50 &&
-        mariocontroller.offsetLeft - highlandcontroller.offsetLeft < 195
-      ) {
-        marioUpHighland();
-      }
     }, 1000);
   };
 
@@ -58,8 +52,8 @@ export const controller = (
     if (event.key === "ArrowUp") {
       if (
         highlandcontroller.offsetLeft > 0 &&
-        mariocontroller.offsetLeft - highlandcontroller.offsetLeft > 0 &&
-        mariocontroller.offsetLeft - highlandcontroller.offsetLeft < 212
+        mariocontroller.offsetLeft - highlandcontroller.offsetLeft > -100 &&
+        mariocontroller.offsetLeft - highlandcontroller.offsetLeft < 200
       ) {
         jumpHighland();
       } else {
