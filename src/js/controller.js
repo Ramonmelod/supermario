@@ -28,9 +28,43 @@ export const controller = (
     }, 1000);
   };
 
+  const marioUpHighland = setInterval(() => {
+    if (
+      highlandcontroller.offsetLeft > 0 &&
+      mariocontroller.offsetLeft - highlandcontroller.offsetLeft > -50 &&
+      mariocontroller.offsetLeft - highlandcontroller.offsetLeft < 195
+    ) {
+      mariocontroller.style.bottom = "169px";
+    } else {
+      mariocontroller.style.bottom = "30px"; // colocar transição de descida
+    }
+  }, 10);
+
+  const jumpHighland = () => {
+    mariocontroller.classList.add("marioJumpHighland");
+    setTimeout(() => {
+      mariocontroller.classList.remove("marioJumpHighland"); //setTimeout faz com que o código espere algum tempo até ir para  a função anônima
+      if (
+        highlandcontroller.offsetLeft > 0 &&
+        mariocontroller.offsetLeft - highlandcontroller.offsetLeft > -50 &&
+        mariocontroller.offsetLeft - highlandcontroller.offsetLeft < 195
+      ) {
+        marioUpHighland();
+      }
+    }, 1000);
+  };
+
   const ativaJump = document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowUp") {
-      jump();
+      if (
+        highlandcontroller.offsetLeft > 0 &&
+        mariocontroller.offsetLeft - highlandcontroller.offsetLeft > 0 &&
+        mariocontroller.offsetLeft - highlandcontroller.offsetLeft < 212
+      ) {
+        jumpHighland();
+      } else {
+        jump();
+      }
     }
   });
 
@@ -50,15 +84,14 @@ export const controller = (
     }
   });
 
-  const marioUpHighland = () => {
-    mariocontroller.classList.add("marioUpHighland");
-  };
-
-  const ativaMarioUpHighland = document.addEventListener("keydown", (event) => {
-    if (event.key === "d") {
-      marioUpHighland();
+  const ativaMarioUpHighlandleft = document.addEventListener(
+    "keydown",
+    (event) => {
+      if (event.key === "d") {
+        jumpHighland();
+      }
     }
-  });
+  );
 
   const loop1 = setInterval(() => {
     const collisionReceiver = collision(
@@ -78,7 +111,7 @@ export const controller = (
       highlandcontroller.style.display = "block"; //troca o estado da propriedade display da highland assim que o pipe some
     }
 
-    if (collisionReceiver) {
+    if (/*collisionReceiver*/ false) {
       // esta variavel recebe o valor diretamente do arquivo colision.js
       // condição de game over
       pipecontroller.style.animation = "none"; // desliga o movimento do cano
