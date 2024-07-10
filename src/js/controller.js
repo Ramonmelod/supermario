@@ -31,10 +31,12 @@ export const controller = (
   const marioUpHighland = setInterval(() => {
     // monitora posição do mario para definir sua altura
     if (
+      mariocontroller.offsetTop < 388 && // esta condição garante que o mario só subirá a highland se ele pular até no minimo uma determinada altura
       highlandcontroller.offsetLeft > 0 &&
       mariocontroller.offsetLeft - highlandcontroller.offsetLeft > -50 &&
-      mariocontroller.offsetLeft - highlandcontroller.offsetLeft < 195
+      mariocontroller.offsetLeft - highlandcontroller.offsetLeft < 175
     ) {
+      console.log("marioTop" + mariocontroller.offsetTop);
       mariocontroller.style.bottom = "169px";
     } else {
       mariocontroller.style.bottom = "30px"; // colocar transição de descida
@@ -96,7 +98,7 @@ export const controller = (
       highlandcontroller.style.display = "block"; //troca o estado da propriedade display da highland assim que o pipe some
     }
 
-    if (/*collisionReceiver*/ false) {
+    if (collisionReceiver) {
       // esta variavel recebe o valor diretamente do arquivo colision.js
       // condição de game over
       pipecontroller.style.animation = "none"; // desliga o movimento do cano
