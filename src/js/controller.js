@@ -51,20 +51,26 @@ export const controller = (
 
   const ativaJump = document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowUp") {
-      const a = mariocontroller.offsetTop;
       if (
+        mariocontroller.offsetTop == 388 && // a primeira condição é de altura do solo
         highlandcontroller.offsetLeft > 0 &&
         mariocontroller.offsetLeft - highlandcontroller.offsetLeft > -100 &&
         mariocontroller.offsetLeft - highlandcontroller.offsetLeft < 200
       ) {
         console.log("MariooffsetTopUp: " + mariocontroller.offsetTop);
         jumpUpHighland();
-      } else {
-        console.log("MariooffsetTop: " + mariocontroller.offsetTop);
-        /*if (mariocontroller.offsetTop > 249) {
+      }
+      if (mariocontroller.offsetTop == 249) {
+        //condição de altura da montanha
         console.log("ele está em cima");
         console.log("marioTop: " + mariocontroller.offsetTop);
-      } */
+        console.log("Dtop: " + mariocontroller.offsetTop);
+        mariocontroller.classList.add("marioJumpfromHighland");
+        setTimeout(() => {
+          mariocontroller.classList.remove("marioJumpfromHighland"); //setTimeout faz com que o código espere algum tempo até ir para  a função anônima
+        }, 1000);
+      } else {
+        console.log("MariooffsetTop: " + mariocontroller.offsetTop);
         jump();
       }
     }
@@ -83,21 +89,6 @@ export const controller = (
     if (event.key === "ArrowRight") {
       mariocontroller.classList.remove("mirror");
       moveright();
-    }
-  });
-
-  const d = document.addEventListener("keydown", (event) => {
-    // desativa a função que espelha o personagem Mario
-    if (event.key === "d") {
-      if (mariocontroller.offsetTop == 249) {
-        console.log("ele está em cima");
-        console.log("marioTop: " + mariocontroller.offsetTop);
-        console.log("Dtop: " + mariocontroller.offsetTop);
-        mariocontroller.classList.add("marioJumpfromHighland");
-        setTimeout(() => {
-          mariocontroller.classList.remove("marioJumpfromHighland"); //setTimeout faz com que o código espere algum tempo até ir para  a função anônima
-        }, 1000);
-      }
     }
   });
 
