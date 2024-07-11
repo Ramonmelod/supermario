@@ -37,7 +37,11 @@ export const controller = (
       mariocontroller.offsetLeft - highlandcontroller.offsetLeft < 175
     ) {
       mariocontroller.style.bottom = "169px";
-    } else {
+    } else if (mariocontroller.offsetTop == 249) {
+      mariocontroller.classList.add("marioFallHighland");
+      setTimeout(() => {
+        mariocontroller.classList.remove("marioFallHighland"); //setTimeout faz com que o código espere algum tempo até ir para  a função anônima
+      }, 1000);
       mariocontroller.style.bottom = "30px"; // colocar transição de descida
     }
   }, 10);
@@ -110,7 +114,7 @@ export const controller = (
       highlandcontroller.style.display = "block"; //troca o estado da propriedade display da highland assim que o pipe some
     }
 
-    if (collisionReceiver) {
+    if (/*collisionReceiver*/ false) {
       // esta variavel recebe o valor diretamente do arquivo colision.js
       // condição de game over
       pipecontroller.style.animation = "none"; // desliga o movimento do cano

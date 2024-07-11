@@ -140,6 +140,10 @@
 .marioJumpfromHighland {
   animation: jumpfromHighland 1s;
 }
+.marioFallHighland {
+  animation: fall 0.5s;
+}
+
 @keyframes jumpfromHighland {
   0% {
     bottom: 169px;
@@ -155,6 +159,14 @@
   }
   100% {
     bottom: 169px;
+  }
+}
+@keyframes fall {
+  from {
+    bottom: 169px; /* é coloca desta forma para que o elemento não apareça abruptamente na tela*/
+  }
+  to {
+    bottom: 30px;
   }
 }
 
