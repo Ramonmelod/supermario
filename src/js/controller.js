@@ -110,7 +110,7 @@ export const controller = (
       highlandcontroller.style.display = "block"; //troca o estado da propriedade display da highland assim que o pipe some
     }
 
-    if (/*collisionReceiver*/ false) {
+    if (collisionReceiver) {
       // esta variavel recebe o valor diretamente do arquivo colision.js
       // condição de game over
       pipecontroller.style.animation = "none"; // desliga o movimento do cano
