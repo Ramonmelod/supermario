@@ -10,6 +10,6 @@
 - It is a JavaScript-based web application inspired by Super Mario World, that makes a query to an API rest
 
 ## Consulted API 
-- [Apirest de consulta e post ao banco de dados de recordistas](https://github.com/Ramonmelod/Ramonmelod-servidorNodeRecordistasMario)
+- [Record Holders Database API for Querying and Posting](https://github.com/Ramonmelod/Ramonmelod-servidorNodeRecordistasMario)
 
 
