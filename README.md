@@ -10,6 +10,6 @@
 - It is a JavaScript-based web application inspired by Super Mario World, that makes a query to an API rest
 
 ## Consulted API 
-- [Record Holders Database API for Querying and Posting](https://github.com/Ramonmelod/Ramonmelod-servidorNodeRecordistasMario)
+- [Record Holders Database API for Querying and Posting](https://github.com/Ramonmelod/servidor-mario)
 
 
