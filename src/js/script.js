@@ -7,8 +7,8 @@ const urlGet =
   "https://ramonmelod-servidor-node-recordistas-mario.vercel.app" ||
   "http://localhost:8080";
 const urlPost =
-  "https://ramonmelod-servidor-node-recordistas-mario.vercel.app/post" ||
-  "http://localhost:8080/post ";
+  "https://ramonmelod-servidor-node-recordistas-mario.vercel.app/" ||
+  "http://localhost:8080/ ";
 
 const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
