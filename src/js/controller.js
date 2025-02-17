@@ -62,7 +62,7 @@ export const controller = (
     // const goombaPosition = goombacontroller.offsetLeft; //monitora o posicionamento class mariocontroller
     const marioLeftPosition = mariocontroller.offsetLeft; //monitora o posicionamento class mariocontroller
 
-    animationTimecontroller = animationTimecontroller - 0.0005; //decremento da variavel animationTimecontroller. Isto acelera o cano
+    animationTimecontroller = animationTimecontroller - 0.00005; //decremento da variavel animationTimecontroller. Isto acelera o cano
     pipecontroller.style.animation = `coming-animation ${animationTimecontroller}s infinite linear`;
     if (pipePosition < 0) {
       highlandcontroller.style.display = "block"; //troca o estado da propriedade display da highland assim que o pipe some
