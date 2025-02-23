@@ -94,33 +94,35 @@ getRecordistsList().then((data) => {
   //envio do novo recordista
 
   const caixa = document.querySelector(".caixa"); // caixa de dialogo com captura do texto com a tecla enter
+  document.addEventListener("DOMContentLoaded", () => {
+    // faz a execução do código aguardar o dom carregar o elemento caixa
+    caixa
+      .addEventListener("keydown", (event) => {
+        // captura o nome do recordista
+        let recordista = caixa.value;
 
-  caixa
-    .addEventListener("keydown", (event) => {
-      // captura o nome do recordista
-      let recordista = caixa.value;
+        if (
+          (pontos > data[data.length - 1].i_pontuacao_listarecordistas) |
+            (data.length < 11) && // condição true caso haja menos que 10 recordistas
+          !pontosControle &&
+          btnEnterControle
+        ) {
+          // condições inciais:ser maior que o ultimo elemento e ter morrido
 
-      if (
-        (pontos > data[data.length - 1].i_pontuacao_listarecordistas) |
-          (data.length < 11) && // condição true caso haja menos que 10 recordistas
-        !pontosControle &&
-        btnEnterControle
-      ) {
-        // condições inciais:ser maior que o ultimo elemento e ter morrido
+          if (event.key === "Enter") {
+            btnEnterControle = false;
+            add(recordista, pontos, urlPost); //----------------- chamada da função que faz o post
 
-        if (event.key === "Enter") {
-          btnEnterControle = false;
-          add(recordista, pontos, urlPost); //----------------- chamada da função que faz o post
-
-          caixa.value = ""; // apaga o nome digitado na caixa de dialogo
-          dialogo.innerHTML = "Parabéns, você está entre os 10 melhores!"; // atualiza a mensagem para o jogador
+            caixa.value = ""; // apaga o nome digitado na caixa de dialogo
+            dialogo.innerHTML = "Parabéns, você está entre os 10 melhores!"; // atualiza a mensagem para o jogador
+          }
         }
-      }
-    })
-    .catch((error) => {
-      if (error) {
-        // if para limitar mensagem de erro para apenas quando houver mensagem de erro
-        console.error("Erro:", error);
-      }
-    });
+      })
+      .catch((error) => {
+        if (error) {
+          // if para limitar mensagem de erro para apenas quando houver mensagem de erro
+          console.error("Erro:", error);
+        }
+      });
+  });
 });
