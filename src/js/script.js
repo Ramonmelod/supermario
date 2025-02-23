@@ -35,7 +35,6 @@ const pontosIncremento = setInterval(() => {
   if (!pontosControle) clearInterval(pontosIncremento); // esta condição quando satisfeita para o incremento da variavel pontos
 }, 1000);
 
-const cls = collision(pipe, mario, goomba);
 controller(
   // chamada da função controller exportada do arquivo controller.js
   mario,
