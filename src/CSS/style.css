@@ -26,11 +26,12 @@
 }
 
 .goomba {
+  display: none;
   position: absolute;
   bottom: 0px;
   width: 15%;
   height: 20%;
-  animation: goomba-animation 3s infinite linear;
+  animation: goomba-animation 5s infinite linear;
 }
 
 .mirror {

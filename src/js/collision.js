@@ -8,7 +8,8 @@ export const collision = (pipecollision, mariocollision, goombacollision) => {
     (pipePosition - marioLeftPosition < 60 &&
       pipePosition - marioLeftPosition > 0 &&
       marioPosition > 353) || // pipe death condition
-    (goombaPosition - marioLeftPosition < 30 &&
+    (goombaPosition !== 0 && // goombaPosition = 0 quando seu display = none
+      goombaPosition - marioLeftPosition < 30 &&
       goombaPosition - marioLeftPosition > -15 && // foi colocado um valor menor que zero para evitar que o Mario passe muito rapido pelo Goomba e não morra
       marioPosition > 353) // goomba death condition
   ) {

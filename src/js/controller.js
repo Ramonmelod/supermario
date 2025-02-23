@@ -50,7 +50,7 @@ export const controller = (
     }
   });
 
-  const loop1 = setInterval(() => {
+  setInterval(() => {
     const collisionReceiver = collision(
       pipecontroller,
       mariocontroller,
@@ -85,5 +85,8 @@ export const controller = (
       dialogocontroller.style.display = "block"; //mostrar o dialogo de gameover
     }
   }, 5);
+  setTimeout(() => {
+    goombacontroller.style.display = "block"; // depois de 10s troca a propriedade display do goomba de none pra block
+  }, 10000);
   return pontoscontroller;
 };
