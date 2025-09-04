@@ -1,12 +1,12 @@
 export const query = async (urlQuery) => {
-  const response = await fetch(urlQuery) //captura dos dados em json da api de leitura e registro de recordes
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error("Erro na solicitação da API");
-      }
+  try {
+    const response = await fetch(urlQuery);
+    if (!response.ok) {
+      throw new Error("Erro na solicitação da API");
+    }
 
-      return res.json();
-    });
-
-  return response;
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
 };
